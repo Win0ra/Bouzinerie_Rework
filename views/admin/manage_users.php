@@ -1,4 +1,9 @@
-<?php require dirname(__DIR__) . '/templates/admin/header.php'; ?>
+<?php 
+require dirname(__DIR__) . '/templates/admin/header.php'; 
+
+// Initialiser $users s'il n'est pas défini
+$users = $users ?? [];
+?>
 
 <div class="container mt-4">
     <h2>Gestion des utilisateurs</h2>
@@ -17,42 +22,46 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($users as $user): ?>
+                    <?php if (!empty($users)): ?>
+                        <?php foreach ($users as $user): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($user['id']); ?></td>
+                                <td><?php echo htmlspecialchars($user['email']); ?></td>
+                                <td><?php echo $user['is_admin'] ? 'Oui' : 'Non'; ?></td>
+                                <td><?php echo htmlspecialchars($user['created_at']); ?></td>
+                                <td>
+                                    <?php if (!empty($user['scores'])): ?>
+                                        <ul>
+                                            <?php foreach ($user['scores'] as $score): ?>
+                                                <li>
+                                                    Score: <?php echo $score['score']; ?> /
+                                                    <?php echo $score['total_questions']; ?>
+                                                    (<?php echo htmlspecialchars($score['played_at']); ?>)
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    <?php else: ?>
+                                        Aucun score
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <a href="index.php?page=admin&action=users&manage=edit_user&id=<?php echo $user['id']; ?>" 
+                                    class="btn btn-sm btn-warning">Modifier</a>
+                                    <a href="index.php?page=admin&action=users&manage=delete_user&id=<?php echo $user['id']; ?>" 
+                                    class="btn btn-sm btn-danger"
+                                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur?');">
+                                        Supprimer
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($user['id']); ?></td>
-                            <td><?php echo htmlspecialchars($user['email']); ?></td>
-                            <td><?php echo $user['is_admin'] ? 'Oui' : 'Non'; ?></td>
-                            <td><?php echo htmlspecialchars($user['created_at']); ?></td>
-                            <td>
-                                <?php if (!empty($user['scores'])): ?>
-                                    <ul>
-                                        <?php foreach ($user['scores'] as $score): ?>
-                                            <li>
-                                                Score: <?php echo $score['score']; ?> /
-                                                <?php echo $score['total_questions']; ?>
-                                                (<?php echo htmlspecialchars($score['played_at']); ?>)
-                                            </li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                <?php else: ?>
-                                    Aucun score
-                                <?php endif; ?>
-                            </td>
-                            <td>
-                                <a href="index.php?page=admin&action=users&manage=edit_user&id=<?php echo $user['id']; ?>" 
-                                class="btn btn-sm btn-warning">Modifier</a>
-                                <a href="index.php?page=admin&action=users&manage=delete_user&id=<?php echo $user['id']; ?>" 
-                                class="btn btn-sm btn-danger"
-                                onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur?');">
-                                    Supprimer
-                                </a>
-                            </td>
-
+                            <td colspan="6">Aucun utilisateur trouvé.</td>
                         </tr>
-                    <?php endforeach; ?>
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
