@@ -15,4 +15,6 @@ require dirname(__DIR__) . '/templates/podium.php';
                 <p class="txt-ranking">Voir le Classement</p>
             </button></a>
 
-<?php require dirname(__DIR__) . '/templates/footer.php'; ?>
+            <?php require dirname(__DIR__) . '/templates/footer.php'; ?>
+
+

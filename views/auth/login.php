@@ -24,7 +24,7 @@
             <div class="card-header">
                 <h3 class="text-center">Connexion</h3>
             </div>
-            <div class="card-body">
+            <!-- <div class="card-body"> -->
                 <?php if (!empty($errors)): ?>
                     <div class="alert alert-danger">
                         <ul class="mb-0">
@@ -45,13 +45,13 @@
                 <?php endif; ?>
 
                 <form method="POST" action="index.php?page=login" novalidate>
-                    <div class="form-group mb-3">
+                    <div class="left">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" id="email" name="email"
                             value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>"
                             required>
                     </div>
-                    <div class="form-group mb-3">
+                    <div class="left">
                         <label for="password">Mot de passe</label>
                         <input type="password" class="form-control" id="password" name="password" required>
                     </div>
@@ -61,7 +61,7 @@
                 <div class="mt-3 text-center">
                     <p>Pas encore inscrit? <a href="index.php?page=register">S'inscrire</a></p>
                 </div>
-            </div>
+            <!-- </div> -->
             <div class="connex-rs">
                 <!-- Bouton Google Sign-In -->
                 <div id="g_id_onload"

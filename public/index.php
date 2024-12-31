@@ -54,7 +54,6 @@ switch ($page) {
         }
         break;
 
-
     case 'home':
         require_once dirname(__DIR__) . '/controllers/HomeController.php';
         require_once dirname(__DIR__) . '/config/Database.php';
@@ -69,6 +68,31 @@ switch ($page) {
             echo "Erreur : " . $e->getMessage();
         }
         break;
+
+        case 'contact':
+            require_once dirname(__DIR__) . '/controllers/TemplateController.php';
+            $controller = new TemplateController();
+            $controller->contact();
+            break;
+        
+        case 'gcu':
+            require_once dirname(__DIR__) . '/controllers/TemplateController.php';
+            $controller = new TemplateController();
+            $controller->cgu();
+            break;
+        
+        case 'legal-notices':
+            require_once dirname(__DIR__) . '/controllers/TemplateController.php';
+            $controller = new TemplateController();
+            $controller->legalNotices();
+            break;
+        
+        case 'footer':
+            require_once dirname(__DIR__) . '/controllers/TemplateController.php';
+            $controller = new TemplateController();
+            $footerLinks = $controller->footer();
+            break;
+        
 
     case 'admin':
         require_once dirname(__DIR__) . '/controllers/admin/AdminController.php';

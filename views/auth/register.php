@@ -25,18 +25,18 @@
             <?php endif; ?>
 
             <form method="POST" action="index.php?page=register" novalidate>
-                <div class="form-group mb-3">
+                <div class="left">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email"
                         value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>"
                         required>
                 </div>
-                <div class="form-group mb-3">
+                <div class="left">
                     <label for="password">Mot de passe</label>
                     <input type="password" class="form-control" id="password" name="password" required>
-                    <small class="form-text text-muted">Le mot de passe doit contenir au moins 6 caractères</small>
                 </div>
-                <div class="form-group mb-3">
+                <small class="form-text text-muted">Le mot de passe doit contenir au moins 6 caractères</small><br/>
+                <div class="left">
                     <label for="confirm_password">Confirmer le mot de passe</label>
                     <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
                 </div>

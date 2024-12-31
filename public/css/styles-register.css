@@ -80,6 +80,10 @@ p {
     margin: 0px auto;
     width: 1040px;
 }
+.left {
+    font-family: Lobster Two;
+    font-size: 25px;
+}
 
 /* INFORMATIONS PERSONNELLES */
 input {

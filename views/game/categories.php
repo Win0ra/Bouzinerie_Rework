@@ -1,4 +1,5 @@
 <?php require dirname(__DIR__). '/templates/header.php'; ?>
+<link rel="stylesheet" href="/bouzinerie_rework/public/css/styles-body.css" type="text/css" media="all">
 
 <div class="container mt-4">
     <h2 class="text-center mb-4">Choisissez une catégorie</h2>
@@ -20,3 +21,5 @@
         <?php endforeach; ?>
     </div>
 </div>
+
+<?php require dirname(__DIR__). '/templates/footer.php'; ?>

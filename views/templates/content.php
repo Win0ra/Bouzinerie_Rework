@@ -19,7 +19,7 @@
                 mouvementés) et qui se sont décidés à créer un site ludique et amusant.<br />
                 L'idée du nom nous vient de "bouzin" signifiant "vacarme", ce qui nous semble essentiel lorsqu'on
                 participe à des quiz entre ami.e.s !<br />
-                Ici vous pourrez tester vos connaissances, en apprendre de nouvelles et même créer vos propres quiz !<br />
+                Ici vous pourrez tester vos connaissances, et sûrement en apprendre de nouvelles !<br />
                 Nous espérons que vous vous amuserez autant que nous ici !<br />
                 Lequel d'entre-vous va devenir le meilleur Bouzin ? &#x1F600</p>
         </div>

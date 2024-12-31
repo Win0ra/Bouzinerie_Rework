@@ -97,7 +97,10 @@ input{
     font-family: Bellota;
     font-size: 20px;
 }
-
+.left {
+    font-family: Lobster Two;
+    font-size: 25px;
+}
 #checkbox,
 p {
     display: inline-block;
@@ -141,9 +144,9 @@ p.password-lost {
     justify-content: space-between;
 }
 /* Masquer le bouton Google natif pour respecter notre design */
-/* #g_id_onload, .g_id_signin {
+    /* #g_id_onload, .g_id_signin {
     display: none !important;
-} */
+}  */
 
 .sm-button{
     width: 245px;
@@ -159,7 +162,7 @@ p.password-lost {
     cursor: pointer;
 }
 
-.no-compte p a, .checkbox p a {
+.no-compte p a #log, .checkbox p a {
     color: blue !important;
     text-decoration: underline;
     cursor: pointer;
@@ -174,6 +177,7 @@ p.password-lost {
 .connex-sm .fa-brands{
     background-image: linear-gradient(#EDC267,#9a6748);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 

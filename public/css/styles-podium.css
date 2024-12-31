@@ -1,7 +1,7 @@
 /* PODIUM CSS */
-#leaderboard {
+/* #leaderboard {
     margin-top: 40px;
-}
+} */
 
 .h2-podium {
     font-size: 36px;
@@ -81,5 +81,98 @@ p.p-podium {
     text-align: center;
     position: relative;
     width: 1040px;
-    margin: 0;
+    margin: 0 auto;
+}
+
+/* Tablette */
+@media screen and (max-width: 1024px) {
+    .Blocks {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    #first {
+        font-size: 200px;
+    }
+
+    #second, #third {
+        font-size: 150px;
+    }
+
+    .FirstBlock {
+        height: 280px;
+    }
+
+    .SecondBlock, .ThirdBlock {
+        height: 130px;
+    }
+
+    p.p-podium {
+        font-size: 28px;
+    }
+
+    .h2-podium {
+        font-size: 30px;
+        padding: 30px 0;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    .Blocks {
+        padding: 0 10px;
+    }
+
+    #first {
+        font-size: 140px;
+    }
+
+    #second, #third {
+        font-size: 100px;
+    }
+
+    .FirstBlock {
+        height: 200px;
+    }
+
+    .SecondBlock, .ThirdBlock {
+        height: 100px;
+    }
+
+    p.p-podium {
+        font-size: 20px;
+    }
+
+    .h2-podium {
+        font-size: 24px;
+        padding: 20px 0;
+    }
+}
+
+/* Petit Mobile */
+@media screen and (max-width: 480px) {
+    #first {
+        font-size: 100px;
+    }
+
+    #second, #third {
+        font-size: 80px;
+    }
+
+    .FirstBlock {
+        height: 160px;
+    }
+
+    .SecondBlock, .ThirdBlock {
+        height: 80px;
+    }
+
+    p.p-podium {
+        font-size: 16px;
+    }
+
+    .h2-podium {
+        font-size: 20px;
+        padding: 15px 0;
+    }
 }
