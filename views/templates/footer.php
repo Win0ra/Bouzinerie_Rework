@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,9 +12,8 @@
     <div class="footer">
         <div class="foot-left">
             <p class="txt-foot"><a href="./index.php">Accueil</a></p>
-            <p class="txt-foot"><a href="./beforegame.php">Jouer</a></p>
-            <p class="txt-foot"><a href="javascript:void(0)">Créer un quiz</a></p>
-            <p class="txt-foot"><a href="./ranking.php">Classement</a></p>
+            <p class="txt-foot"><a href="./beforegame">Jouer</a></p>
+            <p class="txt-foot"><a href="/Bouzinerie_Rework/public/ranking">Classement</a></p>
         </div>
         <div class="foot-center">
             <a href="./index.php"><img src="/bouzinerie_rework/public/img/logo_jaune.svg" alt="logo_la_bouzinerie">
@@ -22,17 +22,17 @@
         </div>
         <div class="foot-right">
             <div class="foot-right-column">
-            <p class="txt-foot"><a href="./connexion.php">Connexion</a></p>
-            <p class="txt-foot"><a href="./register.php">Inscription</a></p>
+            <p class="txt-foot"><a href="./login">Connexion</a></p>
+            <p class="txt-foot"><a href="./register">Inscription</a></p>
             <p class="txt-foot"><a href="./my-account.php">Mon compte</a></p>
         </div>
         <div class="foot-right-column">
         <?php
         $basePath = '/Bouzinerie_rework/';
         ?>
-        <p class="txt-foot"><a href="<?php echo $basePath; ?>templates/contact.php">Contact</a></p>
-        <p class="txt-foot"><a href="<?php echo $basePath; ?>templates/gcu.php">CGU</a></p>
-        <p class="txt-foot"><a href="<?php echo $basePath; ?>templates/legal-notices.php">Mentions légales</a></p>
+        <p class="txt-foot"><a href="/Bouzinerie_Rework/public/contact">Contact</a></p>
+        <p class="txt-foot"><a href="<?php echo $basePath; ?>gcu">CGU</a></p>
+        <p class="txt-foot"><a href="<?php echo $basePath; ?>legal-notices.">Mentions légales</a></p>
 
             </div>
         </div>

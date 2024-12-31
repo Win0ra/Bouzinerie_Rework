@@ -22,7 +22,7 @@
 
                 <li><a href="index.php?page=categories">Jouer</a></li>
                 <li class="li-chevron">
-                    <a href="index.php?page=home" class="a-ranking" id="ranking">Classement</a>
+                    <a href="index.php?page=ranking" class="a-ranking" id="ranking">Classement</a>
                     <i class="fa-solid fa-chevron-right arrow-dropdown"></i>
                 </li>
                 <a href="#" class="dropdown">Classement par thèmes</a>
@@ -35,10 +35,10 @@
                 <li><a href="index.php?page=logout">Déconnexion</a></li>
 
             <?php else : ?>
-                <li><a href="index.php?page=login">Connexion</a></li>
-                <li><a href="index.php?page=register">Inscription</a></li>
+                <li><a href="login">Connexion</a></li>
+                <li><a href="register">Inscription</a></li>
                 <li class="li-chevron">
-                    <a href="ranking.php" class="a-ranking" id="ranking">Classement</a>
+                    <a href="ranking" class="a-ranking" id="ranking">Classement</a>
                     <i class="fa-solid fa-chevron-right arrow-dropdown"></i>
                 </li>
                 <a href="#" class="dropdown">Classement par thèmes</a>

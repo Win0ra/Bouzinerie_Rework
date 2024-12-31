@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 20 déc. 2024 à 21:47
+-- Généré le : lun. 30 déc. 2024 à 19:48
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.3.0
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `bouzinerie`
+-- Base de données : `bouzinerie_rework`
 --
 
 -- --------------------------------------------------------
@@ -95,8 +95,20 @@ CREATE TABLE IF NOT EXISTS `scores` (
   `total_questions` int NOT NULL,
   `played_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `user_id` (`user_id`),
+  KEY `idx_score` (`score`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `scores`
+--
+
+INSERT INTO `scores` (`id`, `user_id`, `score`, `total_questions`, `played_at`) VALUES
+(1, 1, 850, 10, '2024-12-30 19:28:51'),
+(2, 2, 999, 15, '2024-12-30 19:28:51'),
+(3, 3, 750, 12, '2024-12-30 19:28:51'),
+(4, 4, 600, 8, '2024-12-30 19:28:51'),
+(5, 5, 920, 14, '2024-12-30 19:28:51');
 
 -- --------------------------------------------------------
 
@@ -111,9 +123,21 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `is_admin` tinyint(1) NOT NULL DEFAULT '0',
+  `pseudo` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `password`, `created_at`, `is_admin`, `pseudo`) VALUES
+(1, 'anne@test.com', 'hashed_password', '2024-12-30 19:28:51', 0, 'Anne-Boolé'),
+(2, 'bouzin69@test.com', 'hashed_password', '2024-12-30 19:28:51', 0, 'Bouzin69'),
+(3, 'raoul@test.com', 'hashed_password', '2024-12-30 19:28:51', 0, 'Raoul'),
+(4, 'charlotte@test.com', 'hashed_password', '2024-12-30 19:28:51', 0, 'Charlotte'),
+(5, 'marc@test.com', 'hashed_password', '2024-12-30 19:28:51', 0, 'Marc');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

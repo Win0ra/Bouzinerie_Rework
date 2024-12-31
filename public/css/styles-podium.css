@@ -1,0 +1,85 @@
+/* PODIUM CSS */
+#leaderboard {
+    margin-top: 40px;
+}
+
+.h2-podium {
+    font-size: 36px;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.fa-solid, .fas {
+    font-weight: 900;
+}
+
+#first {
+    color: #edc267;
+    font-size: 250px;
+    position: relative;
+    margin: 0;
+}
+
+#second {
+    color: #707070;
+    font-size: 200px;
+    top: 51px;
+    margin: 0;
+}
+
+#third {
+    color: #9b6c18;
+    font-size: 200px;
+    top: 46px;
+    margin: 0;
+}
+
+.FirstBlock {
+    background: #edc267;
+    height: 347px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.SecondBlock {
+    background: #707070;
+    height: 160px;
+    top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ThirdBlock {
+    background: #9b6c18;
+    height: 160px;
+    top: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+p.p-podium {
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+}
+
+.Second, .Third, .First {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 33.3%;
+}
+
+.Blocks {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    width: 1040px;
+    margin: 0;
+}

@@ -60,37 +60,31 @@
         <h3>Nos quiz</h3>
         <div class="content">
 
-<?php
+        <?php
 // Liste des quiz avec les noms de leurs images correspondantes
 $quiz = [
     'League of Legends' => 'lol.jpg',
     'World of Warcraft' => 'wow.jpg',
     'Dofus' => 'dofus.jpg',
-    'Films' => 'movies.jpg', 
+    'Films' => 'movies.jpg',
     'Sciences' => 'science.jpg',
-    'Littérature' => 'quiz-img.jpg',
-    'Cuisine' => 'quiz-img.jpg',
-    'Histoire' => 'quiz-img.jpg',
-    'Géographie' => 'quiz-img.jpg'
+    'Littérature' => 'litterature.jpg',
+    'Cuisine' => 'food.jpg',
+    'Histoire' => 'history.jpg',
+    'Géographie' => 'geography.jpg'
 ];
 
 // Parcours des quiz pour générer les cartes dynamiquement
-foreach ($quiz as $quiz => $image) {
-    // Chemin de l'image
-    $imagePath = '../../public/img/' . $image;
-
-    // Vérification si le fichier image existe
-    if (!file_exists(__DIR__ . $imagePath)) {
-        // Si l'image n'existe pas, utilisez une image par défaut
-        $imagePath = '/bouzinerie_rework/public/img/' .$image;
-    }
-
+foreach ($quiz as $quizName => $image) {
+    // Définir le chemin de base pour les images
+    $imagePath = '/bouzinerie_rework/public/img/' . $image;
+    
     // Génération de la carte
     echo '
     <div class="card">
         <div class="cards">
-            <h5 class="card-title">' . htmlspecialchars($quiz) . '</h5>
-            <img src="' . $imagePath . '" alt="Image de ' . htmlspecialchars($quiz) . '" class="card-img-top">
+            <h5 class="card-title">' . htmlspecialchars($quizName) . '</h5>
+            <img src="' . $imagePath . '" alt="Image de ' . htmlspecialchars($quizName) . '" class="card-img-top">
             <a href="#" class="btn btn-primary">Jouer</a>
         </div>
     </div>';
@@ -98,47 +92,6 @@ foreach ($quiz as $quiz => $image) {
 ?>
         </div>
 
-
-
-        <!-- PODIUM -->
-        <h3 class="h2-podium">Classement des meilleurs bouzins du moment</h3>
-        <div class="Blocks">
-            <div class="Second">
-                <i class="fa-sharp fa-solid fa-trophy" id="second"></i>
-                <div class="SecondBlock">
-                    <p class="p-podium">Raoul</p>
-                </div>
-            </div>
-            <div class="First">
-                <i class="fa-sharp fa-solid fa-trophy" id="first"></i>
-                <div class="FirstBlock">
-                    <p class="p-podium">M2H</p>
-                </div>
-            </div>
-            <div class="Third">
-                <i class="fa-sharp fa-solid fa-trophy" id="third"></i>
-                <div class="ThirdBlock">
-                    <p class="p-podium">Scrumy</p>
-                </div>
-            </div>
-        </div>
-        <!-- FIN PODIUM -->
-
-        <!-- RANKING DEBUT -->
-                <a href="ranking.php"><button class="ranking"><i class="fa-solid fa-ranking-star"></i>
-                <p class="txt-ranking">Voir le Classement</p>
-            </button></a>
-        <!-- RANKING FIN -->
-
-        <!-- CREATION -->
-        <div class="Creation">
-            <h3 class="bouz">Lance-toi, crée ton propre quiz !</h3>
-            <p>Vous pouvez créer votre quiz pour ensuite envoyer le lien à vos amis et tester leurs connaissances !</p>
-            <a href="../back/src/create/"><button class="creation"><i class="fa-solid fa-pencil"></i>
-                <p class="txt-creation">Créer un quiz</p>
-            </button></a>
-        </div>
-    <!-- </div> -->
 </body>
 
 </html>

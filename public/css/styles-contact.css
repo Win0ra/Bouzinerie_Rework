@@ -3,9 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bellota:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
-
 /* RESET CSS */
-
 html,
 body,
 div,
@@ -138,12 +136,7 @@ table {
     border-spacing: 0;
 }
 
-
-
 /* CONTENU DE LA PAGE */
-
-
-
 body {
     background: linear-gradient(0deg, rgba(170, 203, 245, 1) 0%, rgba(238, 255, 254, 1) 20%, rgba(238, 255, 254, 1) 70%, rgba(170, 203, 245, 1) 100%);
     background-repeat: no-repeat;
@@ -204,8 +197,8 @@ a#footer {
 
 .LeftArea, .LastName, .LongText, label {
     font-family: "Bellota", system-ui;
-
 }
+
 .Form {
     display: grid;
     grid-template-columns: repeat(2, 333px);
@@ -223,7 +216,7 @@ input#text {
 }
 
 ::placeholder {
-    font-size:20px;
+    font-size: 20px;
     font-family: "Bellota", system-ui;
 }
 
@@ -231,7 +224,7 @@ textarea.LongText {
     padding: 32px 0 0 40px !important;
 }
 
-input#Nom, Input#Prenom {
+input#Nom, input#Prenom {
     width: 510px;
     height: 41px;
     border-radius: 100px;
@@ -241,7 +234,7 @@ input#Nom, Input#Prenom {
 }
 
 input#Nom, input#Prenom, input#Email, input#Objet {
-    padding:  8px 0 8px 40px;
+    padding: 8px 0 8px 40px;
     box-sizing: border-box;
 }
 
@@ -325,4 +318,83 @@ button.Send {
 .txt-send {
     padding: 0 0 0 40px;
     text-decoration: none;
+}
+
+/* Responsive Design for Tablets */
+@media (max-width: 1024px) {
+    .margin {
+        width: 90%;
+    }
+
+    .Form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    input#Nom, input#Prenom {
+        width: calc(50% - 10px); /* Ajustement pour la marge */
+        margin-bottom: 20px;
+    }
+
+    input#Email {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    input#Objet {
+        width: calc(50% - 10px); /* Ajustement pour la marge */
+        margin-bottom: 20px;
+    }
+
+    textarea.LongText {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    button.Send {
+        width: 100%;
+    }
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .margin {
+        width: 90%;
+    }
+
+    input#text, input#Email, textarea.LongText, button.Send {
+        width: 100%;
+    }
+
+    input#Nom, input#Prenom, input#Objet {
+        width: 100%;
+    }
+
+    .Form {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .LastName, .Email, .Object, .LongText {
+        position: static;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    h3 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 20px;
+    }
 }

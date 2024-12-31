@@ -1,17 +1,16 @@
 /* IMPORTS FONT */
-
 @import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bellota:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
-
 /* CONTENU DE LA PAGE */
-
 .footer {
     height: 320px;
     width: 100%;
     background: #253154;
     display: flex;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 .foot-center {
@@ -26,6 +25,8 @@
     font-size: 24px;
     justify-content: center;
     align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 .foot-left, .foot-right {
@@ -38,6 +39,8 @@
     font-size: 24px;
     align-items: center;
     justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
 }
 
 .foot-right {
@@ -58,21 +61,30 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
 }
 
 p.txt-foot-center {
     font-family: Lobster two;
     padding: 30px 0px 0px 0px;
     font-size: 24px;
+    margin: 0;
 }
 
-a{
+a {
     text-decoration: none;
     color: white;
+    display: block;
+    margin: 0;
+    padding: 0;
 }
 
 .foot-center a img {
     height: 120px;
+    display: block;
+    margin: 0;
+    padding: 0;
 }
 
 /* Version tablette (768px à 1024px) */
@@ -81,12 +93,21 @@ a{
         height: auto;
         padding: 20px 0;
         flex-direction: column;
+        margin-bottom: 0;
     }
 
     .foot-center, .foot-left, .foot-right {
         width: 100%;
         border: none;
         padding: 20px 0;
+        margin: 0;
+    }
+
+    .foot-left {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        justify-items: center;
     }
 
     .foot-center {
@@ -94,23 +115,31 @@ a{
         border-bottom: 1px solid white;
     }
 
+    .foot-center a img {
+        height: 70px;
+    }
+
     .foot-right {
-        flex-direction: row;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        justify-items: center;
+        padding-bottom: 0;
+        margin-bottom: 0;
     }
 
     .foot-right-column {
-        padding: 0 20px;
+        padding: 0;
         height: auto;
+        width: 100%;
+        align-items: center;
+        margin-bottom: 0;
     }
 
     p.txt-foot-center {
-        padding: 15px 0;
+        padding: 10px 0;
         font-size: 20px;
-    }
-
-    .foot-center a img {
-        height: 100px;
+        margin: 0;
     }
 }
 
@@ -118,30 +147,63 @@ a{
 @media screen and (max-width: 767px) {
     .footer {
         padding: 15px 0;
+        margin-bottom: 0;
     }
 
     .foot-center, .foot-left, .foot-right {
-        font-size: 18px;
+        font-size: 16px;
         padding: 15px 0;
+        margin: 0;
     }
 
-    .foot-right {
-        flex-direction: column;
-    }
-
-    .foot-right-column {
-        height: auto;
-        padding: 10px 0;
-        align-items: center;
-    }
-
-    p.txt-foot-center {
-        font-size: 18px;
-        padding: 10px 0;
-        text-align: center;
+    .foot-left {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        padding: 0 10px;
     }
 
     .foot-center a img {
-        height: 80px;
+        height: 60px;
     }
+
+    .foot-right {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        padding: 0 10px;
+        margin-bottom: 0;
+    }
+
+    .foot-right-column {
+        width: 100%;
+        padding: 0;
+        align-items: center;
+        margin-bottom: 0;
+    }
+
+    p.txt-foot-center {
+        font-size: 16px;
+        padding: 8px 0;
+        text-align: center;
+        margin: 0;
+    }
+}
+
+/* Reset des marges pour tous les éléments du footer */
+.footer * {
+    margin-bottom: 0;
+}
+
+/* Assurez-vous que le footer est collé au bas */
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Si vous avez un conteneur principal */
+.main-content {
+    flex: 1;
 }

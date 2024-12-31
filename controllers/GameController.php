@@ -18,7 +18,7 @@ class GameController {
         }
 
         $categories = $this->categoryModel->getAll();
-       require dirname(__DIR__). '/views/game/categories.php';
+        require dirname(__DIR__). '/views/game/categories.php';
     }
 
     public function quiz() {
@@ -35,7 +35,7 @@ class GameController {
 
         $category = $this->categoryModel->getById($categoryId);
         $questions = $this->questionModel->getByCategory($categoryId);
-       require dirname(__DIR__). '/views/game/quiz.php';
+        require dirname(__DIR__). '/views/game/quiz.php';
     }
 }
 

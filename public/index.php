@@ -4,53 +4,77 @@ ini_set('display_errors', 1);
 
 session_start();
 
-
 // Router
 $page = $_GET['page'] ?? 'home';
 
 // Load appropriate controller
-switch($page) {
+switch ($page) {
     case 'login':
-        require_once dirname(__DIR__). '/controllers/AuthController.php';
+        require_once dirname(__DIR__) . '/controllers/AuthController.php';
         $controller = new AuthController();
         $controller->login();
         break;
-        
+
     case 'register':
-        require_once dirname(__DIR__). '/controllers/AuthController.php';
+        require_once dirname(__DIR__) . '/controllers/AuthController.php';
         $controller = new AuthController();
         $controller->register();
         break;
-        
+
     case 'logout':
-        require_once dirname(__DIR__). '/controllers/AuthController.php';
+        require_once dirname(__DIR__) . '/controllers/AuthController.php';
         $controller = new AuthController();
         $controller->logout();
         break;
-        
+
     case 'categories':
-        require_once dirname(__DIR__). '/controllers/GameController.php';
+        require_once dirname(__DIR__) . '/controllers/GameController.php';
         $controller = new GameController();
         $controller->categories();
         break;
-        
+
     case 'quiz':
-        require_once dirname(__DIR__). '/controllers/GameController.php';
+        require_once dirname(__DIR__) . '/controllers/GameController.php';
         $controller = new GameController();
         $controller->quiz();
         break;
-        
-    case 'home':
-    default:
-        require_once dirname(__DIR__). '/controllers/HomeController.php';
-        $controller = new HomeController();
-        $controller->index();
+
+    case 'ranking':
+        require_once dirname(__DIR__) . '/controllers/RankingController.php';
+        require_once dirname(__DIR__) . '/config/Database.php';
+
+        try {
+            $database = new Database();
+            $pdo = $database->getConnection();
+
+            $controller = new RankingController($pdo);
+            $controller->showRanking();
+        } catch (Exception $e) {
+            echo "Erreur : " . $e->getMessage();
+        }
         break;
+
+
+    case 'home':
+        require_once dirname(__DIR__) . '/controllers/HomeController.php';
+        require_once dirname(__DIR__) . '/config/Database.php';
+
+        try {
+            $database = new Database();
+            $pdo = $database->getConnection();
+
+            $controller = new HomeController($pdo);
+            $controller->index();
+        } catch (Exception $e) {
+            echo "Erreur : " . $e->getMessage();
+        }
+        break;
+
     case 'admin':
-        require_once dirname(__DIR__). '/controllers/admin/AdminController.php';
+        require_once dirname(__DIR__) . '/controllers/admin/AdminController.php';
         $controller = new AdminController();
         $action = $_GET['action'] ?? 'dashboard';
-    
+
         switch ($action) {
             case 'add_question':
                 $controller->addQuestion();
@@ -65,25 +89,18 @@ switch($page) {
                 $controller->manageCategories();
                 break;
             case 'users':
-                require_once dirname(__DIR__) . '/controllers/admin/AdminController.php';
-                $controller = new AdminController();
                 if (isset($_GET['manage']) && $_GET['manage'] === 'delete_user' && isset($_GET['id'])) {
-                    
-                        $controller->deleteUser($_GET['id']);
-                }                
-                if (isset($_GET['manage']) && $_GET['manage'] === 'edit_user' && isset($_GET['id'])) {
-
+                    $controller->deleteUser($_GET['id']);
+                } elseif (isset($_GET['manage']) && $_GET['manage'] === 'edit_user' && isset($_GET['id'])) {
                     $controller->editUser($_GET['id']);
-                }
-                else {
+                } else {
                     $controller->manageUsers();
                 }
                 break;
-                
+
             default:
                 $controller->dashboard();
                 break;
         }
         break;
-    
 }

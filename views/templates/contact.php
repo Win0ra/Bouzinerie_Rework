@@ -51,3 +51,4 @@
 </body>
 
 </html>
+<?php require dirname(__DIR__). '/templates/footer.php'; ?>

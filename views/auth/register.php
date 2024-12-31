@@ -49,4 +49,4 @@
         </div>
     </div>
 </div>
-<!-- <?php require dirname(__DIR__). '/templates/footer.php'; ?> -->
+<?php require dirname(__DIR__). '/templates/footer.php'; ?> 

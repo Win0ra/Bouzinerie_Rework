@@ -1,0 +1,240 @@
+/* IMPORTS FONT */
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bellota:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+/* RESET CSS */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    text-decoration: none;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* GENERAL STYLES */
+body {
+    background: #EEFFFE;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+h1 {
+    font-family: 'Lobster Two', cursive;
+    font-size: 48px;
+    text-align: center;
+    color: #2b4a88;
+}
+
+p {
+    font-family: 'Bellota', sans-serif;
+    font-size: 18px;
+    color: #000;
+}
+
+/* STATEMENT */
+.statement {
+    width: 100%;
+    height: 15vh;
+    background: #5778A2;
+    color: #fff;
+    border-bottom-left-radius: 283px;
+    border-bottom-right-radius: 283px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-family: 'Lobster Two', cursive;
+}
+
+/* CONTENT */
+.content {
+    display: flex;
+    justify-content: space-between;
+    margin: 120px 80px 88px 80px;
+    align-items: center;
+}
+
+.content img {
+    width: 527px;
+    height: 50vh;
+    border-radius: 40px;
+    box-shadow: 0px 0px 5px 0px #000;
+    cursor: pointer;
+    object-fit: cover;
+    transition: box-shadow 0.3s ease;
+}
+
+.content img:hover {
+    box-shadow: 0px 0px 10px 2px #000;
+}
+
+/* ANSWERS */
+.answers {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 60%;
+}
+
+.answer {
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: #3661b8; /* Default background */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.answer:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.answer .letter {
+    width: 70px;
+    height: 70px;
+    background: #2b4a88; /* Default letter color */
+    color: #fff;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.answer .item {
+    flex-grow: 1;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    overflow-wrap: anywhere;
+}
+
+/* SPECIFIC COLORS */
+.answer.one {
+    background: #3661b8;
+}
+.answer.one .letter {
+    background: #2b4a88;
+}
+
+.answer.two {
+    background: #cf4082;
+}
+.answer.two .letter {
+    background: #b73974;
+}
+
+.answer.three {
+    background: #966a1e;
+}
+.answer.three .letter {
+    background: #7e5919;
+}
+
+.answer.four {
+    background: #00815c;
+}
+.answer.four .letter {
+    background: #006447;
+}
+
+/* LIGHTBOX */
+.lightbox {
+    width: 100%;
+    height: 100%;
+    background: rgba(30, 30, 30, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: none;
+}
+
+.lightbox .main {
+    position: absolute;
+    top: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.lightbox .main #fermer {
+    width: 30px;
+    height: 30px;
+    background: #000;
+    color: #fff;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.lightbox .main #zoom {
+    width: 60%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #000;
+}
+
+/* FOOTER */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 80px;
+    font-size: 16px;
+    color: #000;
+}

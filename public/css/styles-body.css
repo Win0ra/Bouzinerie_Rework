@@ -158,10 +158,16 @@ i.fa-solid.fa-magnifying-glass {
     text-align: center;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap;
     justify-content: space-between;
-    align-items: stretch;
+    align-items: stretch; */
     height: 100%;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 278px; /* Pour laisser de la place pour le titre et le bouton */
+    object-fit: cover; /* Pour que l'image couvre bien l'espace sans être déformée */
 }
 
 .card {
@@ -198,7 +204,7 @@ a.btn.btn-primary {
     font-weight: bold;
 }
 
-/* PODIUM CSS */
+PODIUM CSS
 #leaderboard {
     margin-top: 40px;
 }
