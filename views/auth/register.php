@@ -5,7 +5,7 @@
 <div class="content mt-5">
     <div class="card">
         <div class="card-header">
-            <h3 class="text-center">Inscription</h3>
+            <h1 class="text-center">Inscription</h1>
         </div>
         <div class="card-body">
             <?php if (!empty($errors)): ?>
@@ -26,6 +26,12 @@
 
             <form method="POST" action="index.php?page=register" novalidate>
                 <div class="left">
+                    <label for="pseudo">Pseudo</label>
+                    <input type="pseudo" class="form-control" id="pseudo" name="pseudo"
+                        value="<?php echo isset($_POST['pseudo']) ? htmlspecialchars($_POST['pseudo']) : ''; ?>"
+                        required>
+                </div>
+                <div class="left">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email"
                         value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>"
@@ -35,7 +41,7 @@
                     <label for="password">Mot de passe</label>
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
-                <small class="form-text text-muted">Le mot de passe doit contenir au moins 6 caractères</small><br/>
+                <small class="form-text text-muted">Le mot de passe doit contenir au moins 6 caractères</small><br/><br/>
                 <div class="left">
                     <label for="confirm_password">Confirmer le mot de passe</label>
                     <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
@@ -44,7 +50,8 @@
             </form>
 
             <div class="mt-3 text-center">
-                <p>Déjà inscrit? <a href="index.php?page=login">Se connecter</a></p>
+                <p>Déjà inscrit? 
+                <button type="submit" class="login"><a href="index.php?page=login">Se connecter</a></button></p>   
             </div>
         </div>
     </div>

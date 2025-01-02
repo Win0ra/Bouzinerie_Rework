@@ -57,12 +57,18 @@ body {
 
 h1 {
     font-family: Lobster Two;
-    font-size: 48px;
+    font-size: 36px;
+    margin-top: 20px;
     text-align: center;
 }
 
 .h1-connex {
     margin: 0px 0px 64px 0px;
+}
+
+label {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 h3 {
@@ -138,15 +144,42 @@ p.password-lost {
     cursor: pointer;
 }
 
+button.register {
+    width: 365px;
+    color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 9px 0px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(#EDC267, #9a6748);
+    font-family: Bellota;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 34px 0 96px 0;
+    cursor: pointer;
+}
+
+button.register a {
+    text-decoration: none;
+}
+button.register:hover a {
+    color: white;
+}
+
+button.register a:hover,
+button.register a:visited,
+button.register a:active {
+    color: white;
+}
+
 .connex-sm {
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
-/* Masquer le bouton Google natif pour respecter notre design */
-    /* #g_id_onload, .g_id_signin {
-    display: none !important;
-}  */
 
 .sm-button{
     width: 245px;
@@ -168,10 +201,11 @@ p.password-lost {
     cursor: pointer;
 }
 
+
 .no-compte{
     text-align: center;
     width: 100%;
-    margin: 72px 0px 0px 0px;
+    /* margin: 72px 0px 0px 0px; */
 }
 
 .connex-sm .fa-brands{
@@ -204,7 +238,7 @@ p.memorize {
     height: 48px;
 }
 
-/* Media Queries for Tablet */
+/* Tablette */
 @media (max-width: 768px) {
     .content {
         width: 90%;
@@ -228,7 +262,7 @@ p.memorize {
     }
 }
 
-/* Media Queries for Mobile */
+/* Mobile */
 @media (max-width: 480px) {
     .content {
         width: 95%;
@@ -263,7 +297,7 @@ p.memorize {
         margin: 0px 0px 30px 0px;
     }
 
-    .no-compte {
+    /* .no-compte {
         margin: 30px 0px 0px 0px;
-    }
+    } */
 }

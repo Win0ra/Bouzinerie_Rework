@@ -56,9 +56,14 @@ body {
 
 h1 {
     font-family: Lobster Two;
-    font-size: 48px;
-    text-align: center;
+    font-size: 36px;
     margin-top: 20px;
+    text-align: center;
+}
+
+label {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .h1-register {
@@ -74,6 +79,7 @@ h3 {
 p {
     font-family: Bellota;
     font-size: 18px;
+    text-align: center;
 }
 
 .content {
@@ -91,7 +97,7 @@ input {
     font-size: 20px;
 }
 
-#email, #password, #confirm_password {
+#pseudo,#email, #password, #confirm_password {
     border-radius: 30px;
     border: none;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -141,8 +147,40 @@ input {
     justify-content: center;
 }
 
-a {
+.mt-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button.login {
+    width: 365px;
+    color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 9px 0px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(#EDC267, #9a6748);
+    font-family: Bellota;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 34px 0 96px 0;
+    cursor: pointer;
+}
+button.login a {
     text-decoration: none;
+}
+button.login:hover a {
+    color: white;
+}
+
+button.login a:hover,
+button.login a:visited,
+button.login a:active {
+    color: white;
 }
 
 /* Media Queries for Tablet */
@@ -177,6 +215,7 @@ a {
 
     h1 {
         font-size: 36px;
+        text-align:center;
     }
 
     h3 {

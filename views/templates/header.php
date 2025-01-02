@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 
     <link rel="stylesheet" href="/bouzinerie_rework/public/css/styles-navbar.css" type="text/css" media="all">
     <!-- <link rel="stylesheet" href="<?php dirname(__DIR__) ?>/public/css/styles-navbar.css" type="text/css" media="all">     -->
@@ -30,13 +30,13 @@
 
                 <?php endif; ?>
 
-                <!-- <li><a href="#">Mon Compte</a></li> -->
+                <li><a href="#">Mon Compte</a></li>
                 <li><a href="index.php?page=logout">Déconnexion</a></li>
 
             <?php else : ?>
                 <li><a href="login">Connexion</a></li>
                 <li><a href="register">Inscription</a></li>
-                <li class="li-chevron">
+                <li class="ranking">
                     <a href="ranking" class="a-ranking" id="ranking">Classement</a>
 
                 </li>
@@ -47,7 +47,7 @@
     </div>
     <!-- TO DO Ajouter la phrase  Connecté en tant que Nom prenom -->
     </div>
-    <script src="/bouzinerie/public/js/script-navbar.js"></script>
+
 
 
 </body>

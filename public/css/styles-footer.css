@@ -80,6 +80,44 @@ a  {
     padding: 0;
 }
 
+/* Style par défaut des liens */
+a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+/* États des liens */
+a:hover,
+a:visited,
+a:active,
+a:focus {
+    color: white;
+    text-decoration: none;
+}
+
+/* Spécifiquement pour les liens dans le footer */
+.footer a,
+.footer a:hover,
+.footer a:visited,
+.footer a:active,
+.footer a:focus {
+    color: white;
+    text-decoration: none;
+}
+
+/* Pour les liens spécifiques dans le footer */
+.txt-foot a,
+.txt-foot a:hover,
+.txt-foot a:visited,
+.txt-foot a:active,
+.txt-foot a:focus {
+    color: white;
+    text-decoration: none;
+}
+
 .foot-center a img {
     height: 120px;
     display: block;
@@ -203,7 +241,3 @@ body {
     flex-direction: column;
 }
 
-/* Si vous avez un conteneur principal */
-.main-content {
-    flex: 1;
-}
