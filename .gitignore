@@ -1,0 +1,8 @@
+# Ignore all files inside directories named "config"
+config/**
+
+# Ignore all files starting with "config"
+config*
+# Ignore all files in config/ except config/example.php
+config/**
+!config/Database.php
