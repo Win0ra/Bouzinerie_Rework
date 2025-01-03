@@ -80,7 +80,34 @@ function saveScore(userId, score, quizId, totalCorrectQuestions) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log('Score saved:', data);
+        const dialog = document.createElement('div');
+        dialog.style.position = 'fixed';
+        dialog.style.top = '50%';
+        dialog.style.left = '50%';
+        dialog.style.transform = 'translate(-50%, -50%)';
+        dialog.style.backgroundColor = 'white';
+        dialog.style.border = '1px solid #ccc';
+        dialog.style.padding = '20px';
+        dialog.style.zIndex = '1000';
+        dialog.style.textAlign = 'center';
+        dialog.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+        dialog.innerHTML = `
+            <p>your Score is : ${score}</p>
+            <p>${data.message}</p>
+            <button id="retakeQuiz" style="margin: 10px; padding: 10px;">Retake Quiz</button>
+            <button id="backToGameList" style="margin: 10px; padding: 10px;">Back to Game List</button>
+        `;
+
+        // Append dialog to the body
+        document.body.appendChild(dialog);
+
+        // Event listeners for the buttons
+        document.getElementById('retakeQuiz').onclick = () => {
+            location.reload(); // Reload the page
+        };
+        document.getElementById('backToGameList').onclick = () => {
+            window.location.href = 'index.php?page=gameList'; // Redirect to the game list
+        };
     })
     .catch((error) => {
         console.error('Error saving score:', error);
