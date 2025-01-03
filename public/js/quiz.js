@@ -106,7 +106,7 @@ function saveScore(userId, score, quizId, totalCorrectQuestions) {
             location.reload(); // Reload the page
         };
         document.getElementById('backToGameList').onclick = () => {
-            window.location.href = 'index.php?page=gameList'; // Redirect to the game list
+            window.location.href = 'index.php?page=home'; // Redirect to the game list
         };
     })
     .catch((error) => {
