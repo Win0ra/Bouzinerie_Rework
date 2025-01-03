@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 
-    <link rel="stylesheet" href="/bouzinerie_rework/public/css/styles-navbar.css" type="text/css" media="all">
-    <!-- <link rel="stylesheet" href="<?php dirname(__DIR__) ?>/public/css/styles-navbar.css" type="text/css" media="all">     -->
+    <link rel="stylesheet" href="/bouzinerie_rework/public/css/styles-navbar.css" type="text/css" media="all"> 
     <script src="https://kit.fontawesome.com/e98829b701.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
@@ -25,7 +24,7 @@
                     <a href="index.php?page=ranking" class="a-ranking" id="ranking">Classement</a>
 
                 </li>
-                <?php if ($userModel->isAdmin($_SESSION['user_id'])): ?>
+                <?php if (isset($userModel) && $userModel->isAdmin($_SESSION['user_id'])): ?>
                     <li><a href="index.php?page=admin">Panneau Admin</a></li>
 
                 <?php endif; ?>

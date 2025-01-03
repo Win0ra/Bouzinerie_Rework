@@ -10,7 +10,7 @@
     <script src="https://kit.fontawesome.com/e98829b701.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+
 <body>
     <div class="margin">
         <!-- PRESENTATION -->
@@ -60,40 +60,22 @@
         <!-- QUIZ CARDS -->
         <h3>Nos quiz</h3>
         <div class="content">
-            <?php
-            // Liste des quiz avec les noms de leurs images correspondantes
-            $quiz = [
-                'League of Legends' => 'lol.jpg',
-                'World of Warcraft' => 'wow.jpg',
-                'Dofus' => 'dofus.jpg',
-                'Films' => 'movies.jpg',
-                'Sciences' => 'science.jpg',
-                'Littérature' => 'litterature.jpg',
-                'Cuisine' => 'food.jpg',
-                'Histoire' => 'history.jpg',
-                'Géographie' => 'geography.jpg'
-            ];
 
-            // Parcours des quiz pour générer les cartes dynamiquement
-            foreach ($quiz as $quizName => $image) {
-                // Définir le chemin de base pour les images
-                $imagePath = '/bouzinerie_rework/public/img/' . $image;
-
-                // Génération de la carte
-                echo '
+            <?php foreach ($categories as $category): ?>
                 <div class="card">
                     <div class="cards">
-                        <h5 class="card-title">' . htmlspecialchars($quizName) . '</h5>
-                        <img src="' . $imagePath . '" alt="Image de ' . htmlspecialchars($quizName) . '" class="card-img-top">
-                        <a href="#" class="btn btn-primary">Jouer</a>
+                        <h5 class="card-title"><?php echo htmlspecialchars($category['name']); ?></h5>
+                        <a href="index.php?page=quiz&category=<?php echo $category['id']; ?>"
+                            class="btn btn-primary">
+                            Jouer
+                        </a>
                     </div>
-                </div>';
-            }
-            ?>
+                </div>
+            <?php endforeach; ?>
+
         </div>
     </div>
 </body>
+<!-- enlever les balises body et html -->
 
 </html>
-
-

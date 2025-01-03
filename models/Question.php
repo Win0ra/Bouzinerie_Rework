@@ -55,10 +55,9 @@ class Question {
                 SET question = :question, answers = :answers, correct_answer = :correct_answer, category_id = :category_id 
                 WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
-
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':question', $question);
-        $stmt->bindParam(':answers', json_encode($answers)); // Store as JSON
+        $stmt->bindParam(':answers', $answers); // Store as JSON
         $stmt->bindParam(':correct_answer', $correct_answer);
         $stmt->bindParam(':category_id', $category_id);
 

@@ -39,6 +39,10 @@ class AdminController {
 
     public function addQuestion() {
         $categories = $this->categoryModel->getAll();
+        $id = $_GET['id'] ?? null;
+        if ($id) {
+            $question = $this->questionModel->getById($id);
+        }
         $errors = [];
         $success = '';
 
