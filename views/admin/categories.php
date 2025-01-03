@@ -97,8 +97,6 @@ require dirname(__DIR__).'/templates/admin/header.php';
 
 <script>
 function editCategory(category) {
-    <?php $fileInfo = pathinfo($category['image']);?>
-
     const form = document.createElement('form');
     form.method = 'POST';
     form.enctype = 'multipart/form-data';  
