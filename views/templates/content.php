@@ -11,6 +11,7 @@
 </head>
 
 <body>
+<body>
     <div class="margin">
         <!-- PRESENTATION -->
         <div class="Presentation">
@@ -42,7 +43,7 @@
                 }
 
                 try {
-                    const response = await fetch(`../back/src/insert/search.php?q=${encodeURIComponent(query)}`); // modifier constante
+                    const response = await fetch(`../back/src/insert/search.php?q=${encodeURIComponent(query)}`);
                     const data = await response.json();
                     if (data.length > 0) {
                         resultsDiv.innerHTML = data.map(item => `<p>${item.title}</p>`).join('');
@@ -59,39 +60,40 @@
         <!-- QUIZ CARDS -->
         <h3>Nos quiz</h3>
         <div class="content">
+            <?php
+            // Liste des quiz avec les noms de leurs images correspondantes
+            $quiz = [
+                'League of Legends' => 'lol.jpg',
+                'World of Warcraft' => 'wow.jpg',
+                'Dofus' => 'dofus.jpg',
+                'Films' => 'movies.jpg',
+                'Sciences' => 'science.jpg',
+                'Littérature' => 'litterature.jpg',
+                'Cuisine' => 'food.jpg',
+                'Histoire' => 'history.jpg',
+                'Géographie' => 'geography.jpg'
+            ];
 
-        <?php
-// Liste des quiz avec les noms de leurs images correspondantes
-$quiz = [
-    'League of Legends' => 'lol.jpg',
-    'World of Warcraft' => 'wow.jpg',
-    'Dofus' => 'dofus.jpg',
-    'Films' => 'movies.jpg',
-    'Sciences' => 'science.jpg',
-    'Littérature' => 'litterature.jpg',
-    'Cuisine' => 'food.jpg',
-    'Histoire' => 'history.jpg',
-    'Géographie' => 'geography.jpg'
-];
+            // Parcours des quiz pour générer les cartes dynamiquement
+            foreach ($quiz as $quizName => $image) {
+                // Définir le chemin de base pour les images
+                $imagePath = '/bouzinerie_rework/public/img/' . $image;
 
-// Parcours des quiz pour générer les cartes dynamiquement
-foreach ($quiz as $quizName => $image) {
-    // Définir le chemin de base pour les images
-    $imagePath = '/bouzinerie_rework/public/img/' . $image;
-    
-    // Génération de la carte
-    echo '
-    <div class="card">
-        <div class="cards">
-            <h5 class="card-title">' . htmlspecialchars($quizName) . '</h5>
-            <img src="' . $imagePath . '" alt="Image de ' . htmlspecialchars($quizName) . '" class="card-img-top">
-            <a href="#" class="btn btn-primary">Jouer</a>
+                // Génération de la carte
+                echo '
+                <div class="card">
+                    <div class="cards">
+                        <h5 class="card-title">' . htmlspecialchars($quizName) . '</h5>
+                        <img src="' . $imagePath . '" alt="Image de ' . htmlspecialchars($quizName) . '" class="card-img-top">
+                        <a href="#" class="btn btn-primary">Jouer</a>
+                    </div>
+                </div>';
+            }
+            ?>
         </div>
-    </div>';
-}
-?>
-        </div>
-
+    </div>
 </body>
 
 </html>
+
+
