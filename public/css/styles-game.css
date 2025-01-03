@@ -158,31 +158,31 @@ p {
 }
 
 /* SPECIFIC COLORS */
-.answer.one {
+.answer.a {
     background: #3661b8;
 }
-.answer.one .letter {
+.answer.a .letter {
     background: #2b4a88;
 }
 
-.answer.two {
+.answer.b {
     background: #cf4082;
 }
-.answer.two .letter {
+.answer.b .letter {
     background: #b73974;
 }
 
-.answer.three {
+.answer.c {
     background: #966a1e;
 }
-.answer.three .letter {
+.answer.c .letter {
     background: #7e5919;
 }
 
-.answer.four {
+.answer.d {
     background: #00815c;
 }
-.answer.four .letter {
+.answer.d .letter {
     background: #006447;
 }
 

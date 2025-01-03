@@ -17,8 +17,8 @@ function showQuestion(question) {
     console.log(question.answers);
     const answers = JSON.parse(question.answers);
     answers.forEach((answer, index) => {
-        const button = document.createElement('button');
-        button.className = 'answer-btn';
+        const button = document.createElement('a');
+        button.className = 'answer';
         button.textContent = answer;
         button.onclick = () => checkAnswer(index === question.correct_answer);
         answersContainer.appendChild(button);
@@ -154,10 +154,27 @@ class QuizGame {
         try {
             const answers = JSON.parse(question.answers);
             answers.forEach((answer, index) => {
-                const button = document.createElement('button');
-                button.className = 'answer-btn';
-                button.textContent = answer;
+                const button = document.createElement('a');
+                button.className = 'answer ' + (String.fromCharCode(65 + index)).toLowerCase();
+            
+                // Create the letter <p> element
+                const letter = document.createElement('p');
+                letter.className = 'letter ' +(String.fromCharCode(65 + index)).toLowerCase();
+                letter.textContent = String.fromCharCode(65 + index); // Convert index to A, B, C, etc.
+            
+                // Create the item <p> element
+                const item = document.createElement('p');
+                item.className = 'item';
+                item.textContent = answer;
+            
+                // Append <p> elements to the <a> element
+                button.appendChild(letter);
+                button.appendChild(item);
+            
+                // Set up the onclick event
                 button.onclick = () => this.checkAnswer(index === question.correct_answer);
+            
+                // Append the <a> element to the answers container
                 this.answersContainer.appendChild(button);
             });
         } catch (error) {
