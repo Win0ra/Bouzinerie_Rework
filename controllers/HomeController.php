@@ -27,6 +27,7 @@ class HomeController {
         extract(['ranking' => $ranking]);
     
         // Inclure la vue
+        $userModel = $this->userModel;
         $categories = $this->categoryModel->getAll();
         require dirname(__DIR__) . '/views/home/index.php';
     }

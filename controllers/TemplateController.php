@@ -1,10 +1,14 @@
 <?php
+require_once dirname(__DIR__) . '/models/User.php';
 
 class TemplateController {
     private $basePath;
+    private $userModel;
 
     public function __construct() {
         $this->basePath = '/public/';
+        $this->userModel = new User();
+
     }
 
     // Méthode pour le footer

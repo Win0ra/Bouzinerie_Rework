@@ -9,13 +9,14 @@ class User {
         $this->conn = $database->getConnection();
     }
 
-    public function create($email, $password) {
+    public function create($email, $password,$pseudo) {
         try {
-            $query = "INSERT INTO users (email, password) VALUES (:email, :password)";
+            $query = "INSERT INTO users (email, password,pseudo) VALUES (:email, :password,:pseudo)";
             $stmt = $this->conn->prepare($query);
             return $stmt->execute([
                 ':email' => $email,
-                ':password' => $password
+                ':password' => $password,
+                ':pseudo' => $pseudo
             ]);
         } catch (PDOException $e) {
             error_log("Error creating user: " . $e->getMessage());

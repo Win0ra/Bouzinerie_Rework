@@ -55,6 +55,7 @@ class AuthController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
             $password = $_POST['password'] ?? '';
+            $pseudo = $_POST['pseudo'] ?? '';
             $confirmPassword = $_POST['confirm_password'] ?? '';
 
             // Validation
@@ -63,7 +64,9 @@ class AuthController {
             } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $errors[] = "Format d'email invalide";
             }
-
+            if (empty($pseudo)) {
+                $errors[] = "le pseudo est requis";
+            } 
             if (empty($password)) {
                 $errors[] = "Le mot de passe est requis";
             } elseif (strlen($password) < 6) {
@@ -83,8 +86,10 @@ class AuthController {
             if (empty($errors)) {
                 try {
                     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-                    if ($this->userModel->create($email, $hashedPassword)) {
+                    if ($this->userModel->create($email, $hashedPassword,$pseudo)) {
                         $success = "Inscription réussie! Vous pouvez maintenant vous connecter.";
+                        header('Location: index.php?page=login');
+
                     } else {
                         $errors[] = "Une erreur est survenue lors de l'inscription";
                     }

@@ -22,26 +22,28 @@ class Category {
         $stmt->execute([':id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    public function create($name, $description)
+    public function create($name, $description,$image)
     {
-        $sql = "INSERT INTO categories (name, description) VALUES (:name, :description)";
+        $sql = "INSERT INTO categories (name, description,image) VALUES (:name, :description,:image)";
         $stmt = $this->conn->prepare($sql);
 
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':image', $image);
 
         return $stmt->execute();
     }
 
     // Update an existing category
-    public function update($id, $name, $description)
+    public function update($id, $name, $description,$image)
     {
-        $sql = "UPDATE categories SET name = :name, description = :description WHERE id = :id";
+        $sql = "UPDATE categories SET name = :name, description = :description ,image= :image WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
 
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':image', $image);
 
         return $stmt->execute();
     }

@@ -10,6 +10,8 @@ class AdminController {
     private $userModel;
 
     public function __construct() {
+        $this->userModel = new User();
+
         if (!$this->checkAdminAccess()) {
             header('Location: index.php?page=home');
             exit;
@@ -61,6 +63,8 @@ class AdminController {
             if (empty($errors)) {
                 if ($this->questionModel->create($question, json_encode($answers), $correctAnswer, $categoryId)) {
                     $success = "Question ajoutée avec succès";
+                    header("Refresh: 1; url=index.php?page=admin&action=questions");
+
                 } else {
                     $errors[] = "Erreur lors de l'ajout de la question";
                 }
@@ -121,39 +125,88 @@ class AdminController {
         $categories = $this->categoryModel->getAll();
         $errors = [];
         $success = '';
-
+    
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $action = $_POST['action'] ?? '';
             $name = $_POST['name'] ?? '';
             $description = $_POST['description'] ?? '';
-            $categoryId = $_POST['category_id'] ?? '';
-
+            $categoryId = $_POST['category_id'] ?? null;
+            $image = $_FILES['image'] ?? null;
+    
             if ($action === 'add') {
                 if (empty($name)) {
                     $errors[] = "Le nom de la catégorie est requis";
-                } else if ($this->categoryModel->create($name, $description)) {
-                    $success = "Catégorie ajoutée avec succès";
-                    $categories = $this->categoryModel->getAll();
+                } else {
+                    $imagePath = null;
+    
+                    // Handle image upload if provided
+                    if ($image && $image['error'] === UPLOAD_ERR_OK) {
+                        $uploadDir = dirname(__DIR__) . '/uploads/categories/';
+                        if (!is_dir($uploadDir)) {
+                            if (!mkdir($uploadDir, 0755, true) && !is_dir($uploadDir)) {
+                                $errors[] = "Impossible de créer le répertoire des téléchargements.";
+                            }
+                        }
+                        chmod($uploadDir, 0755);
+
+                        $imagePath = $uploadDir . basename($image['name']);
+                        if (!move_uploaded_file($image['tmp_name'], $imagePath)) {
+                            $errors[] = "Erreur lors du déplacement du fichier téléchargé.";
+                        }
+                    }
+    
+                    if (empty($errors) && $this->categoryModel->create($name, $description, $imagePath)) {
+                        $success = "Catégorie ajoutée avec succès";
+                        $categories = $this->categoryModel->getAll();
+                    }
                 }
             } else if ($action === 'edit') {
                 if (empty($name) || empty($categoryId)) {
                     $errors[] = "Le nom et l'ID de la catégorie sont requis";
-                } else if ($this->categoryModel->update($categoryId, $name, $description)) {
-                    $success = "Catégorie mise à jour avec succès";
-                    $categories = $this->categoryModel->getAll();
+                } else {
+                    $imagePath = null;
+    
+                    // Check if a new image is uploaded
+                    if ($image && $image['error'] === UPLOAD_ERR_OK) {
+                        $uploadDir = dirname(__DIR__) . '/uploads/categories/';
+                        if (!is_dir($uploadDir)) {
+                            if (!mkdir($uploadDir, 0755, true) && !is_dir($uploadDir)) {
+                                $errors[] = "Impossible de créer le répertoire des téléchargements.";
+                            }
+                        }
+    
+                        $imagePath = $uploadDir . basename($image['name']);
+                        if (!move_uploaded_file($image['tmp_name'], $imagePath)) {
+                            $errors[] = "Erreur lors du déplacement du fichier téléchargé.";
+                        }
+                    } else {
+                        // Retain the current image if no new image is uploaded
+                        $existingCategory = $this->categoryModel->getById($categoryId);
+                        if ($existingCategory && isset($existingCategory['image'])) {
+                            $imagePath = $existingCategory['image'];
+                        }
+                    }
+    
+                    if (empty($errors) && $this->categoryModel->update($categoryId, $name, $description, $imagePath)) {
+                        $success = "Catégorie mise à jour avec succès";
+                        $categories = $this->categoryModel->getAll();
+                    } else {
+                        $errors[] = "Une erreur s'est produite lors de la mise à jour de la catégorie";
+                    }
                 }
             } else if ($action === 'delete') {
-                if ($this->categoryModel->delete($categoryId)) {
+                if (empty($categoryId)) {
+                    $errors[] = "L'ID de la catégorie est requis pour la suppression.";
+                } else if ($this->categoryModel->delete($categoryId)) {
                     $success = "Catégorie supprimée avec succès";
                     $categories = $this->categoryModel->getAll();
                 }
             }
         }
-
-        
+    
         require __DIR__ . '/../../views/admin/categories.php';
-
     }
+    
 
     public function index() {
         // Fetch leaderboard data

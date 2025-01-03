@@ -57,10 +57,12 @@ switch ($page) {
     case 'home':
         require_once dirname(__DIR__) . '/controllers/HomeController.php';
         require_once dirname(__DIR__) . '/config/Database.php';
+        require_once dirname(__DIR__) . '/models/User.php';
 
         try {
             $database = new Database();
             $pdo = $database->getConnection();
+            $userModel = new User();
 
             $controller = new HomeController($pdo);
             $controller->index();

@@ -1,14 +1,18 @@
 <?php
 require_once dirname(__DIR__).'/models/Question.php';
 require_once dirname(__DIR__).'/models/Category.php';
+require_once dirname(__DIR__) . '/models/User.php';
 
 class GameController {
     private $questionModel;
     private $categoryModel;
+    private $userModel;
 
     public function __construct() {
         $this->questionModel = new Question();
         $this->categoryModel = new Category();
+        $this->userModel = new User();
+
     }
 
     public function categories() {
