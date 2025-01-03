@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nous contacter - La Bouzinerie</title>
-    <link rel="stylesheet" href="/bouzinerie_rework/public/css/styles-contact.css" type="text/css" media="all">
+    <link rel="stylesheet" href="/public/css/styles-contact.css" type="text/css" media="all">
     <script src="https://kit.fontawesome.com/e98829b701.js" crossorigin="anonymous"></script>
 </head>
 
@@ -14,7 +14,7 @@
 <div class="margin">
     <h1>Nous contacter</h1>
     <div class="Form" id="Form">
-        <form name="Contact" method="post" action="/bouzinerie_rework/public/contact-handler.php" enctype="application/x-www-form-urlencoded">
+        <form name="Contact" method="post" action="/public/contact-handler.php" enctype="application/x-www-form-urlencoded">
             <div class="FirstName">
                 <h2>Prénom</h2><br>
                 <input type="text" name="FirstName" id="Prenom" placeholder="Jean-Bouzin-Le-Meilleur" class="champ personne" required>

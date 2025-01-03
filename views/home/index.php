@@ -11,7 +11,7 @@
     ?>
 </div>
 
-<a href="/Bouzinerie_Rework/public/ranking"><button class="ranking"><i class="fa-solid fa-ranking-star"></i>
+<a href="/public/ranking"><button class="ranking"><i class="fa-solid fa-ranking-star"></i>
         <p class="txt-ranking">Voir le Classement</p>
     </button></a>
     

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questions</title>
-    <link rel="stylesheet" type="text/css" href="/bouzinerie_rework/public/css/styles-game.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/public/css/styles-game.css" media="all" />
     <script type="text/javascript" src="./../assets/jquery/jquery-3.7.1.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {

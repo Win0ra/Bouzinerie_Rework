@@ -4,7 +4,7 @@ class TemplateController {
     private $basePath;
 
     public function __construct() {
-        $this->basePath = '/Bouzinerie_Rework/public/';
+        $this->basePath = '/public/';
     }
 
     // Méthode pour le footer

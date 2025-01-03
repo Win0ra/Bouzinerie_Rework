@@ -1,6 +1,6 @@
 <?php require dirname(__DIR__) . '/templates/header.php'; ?>
 
-<link rel="stylesheet" href="/bouzinerie_rework/public/css/styles-login.css" type="text/css" media="all">
+<link rel="stylesheet" href="/public/css/styles-login.css" type="text/css" media="all">
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 
 <script>

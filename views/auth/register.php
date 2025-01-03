@@ -1,6 +1,6 @@
 <?php require dirname(__DIR__).'/templates/header.php'; ?>
 
-<link rel="stylesheet" href="/bouzinerie_rework/public/css/styles-register.css" type="text/css" media="all">
+<link rel="stylesheet" href="/public/css/styles-register.css" type="text/css" media="all">
 
 <div class="content mt-5">
     <div class="card">
