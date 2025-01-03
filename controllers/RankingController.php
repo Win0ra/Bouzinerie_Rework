@@ -22,7 +22,30 @@ class RankingController
             $quizId = $data['quizId'];
             $totalCorrectQuestions = $data['totalCorrectQuestions'];
 
-            $scoreModel = new Score();
+            $scoreModel = new Score(); 
+            $existingScores = $scoreModel->getByUserId($userId);
+            $existingScore = null;
+
+            // Check if the user has already answered the quiz
+            foreach ($existingScores as $existing) {
+                if ($existing['quiz_id'] == $quizId) {
+                    $existingScore = $existing;
+                    break;
+                }
+            }
+
+            // If an existing score is found, compare it with the new score
+            if ($existingScore && $existingScore['score'] < $score) {
+                // Update the existing score if the new score is higher
+                $scoreModel->updateScore($userId, $score, $quizId, $totalCorrectQuestions);
+                echo json_encode(['status' => 'success', 'message' => 'Great Job you Have Scored A new High Score !.']);
+                exit;
+            }
+            if ($existingScore && $existingScore['score'] >= $score) {
+                echo json_encode(['status' => 'success', 'message' => 'Score is not higher that before.']);
+                exit;
+
+            }
             if ($scoreModel->saveScore($userId, $score,$quizId , $totalCorrectQuestions)) {
                 echo json_encode(['status' => 'success', 'message' => 'Score saved successfully.']);
             } else {
