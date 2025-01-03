@@ -14,7 +14,7 @@ function showQuestion(question) {
     
     questionContainer.textContent = question.question;
     answersContainer.innerHTML = '';
-    
+    console.log(question.answers);
     const answers = JSON.parse(question.answers);
     answers.forEach((answer, index) => {
         const button = document.createElement('button');

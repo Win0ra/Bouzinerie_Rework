@@ -20,6 +20,7 @@ class GameController {
             header('Location: index.php?page=login');
             exit;
         }
+        $userModel = $this->userModel;
 
         $categories = $this->categoryModel->getAll();
         require dirname(__DIR__). '/views/game/categories.php';
@@ -36,6 +37,7 @@ class GameController {
             header('Location: index.php?page=categories');
             exit;
         }
+        $userModel = $this->userModel;
 
         $category = $this->categoryModel->getById($categoryId);
         $questions = $this->questionModel->getByCategory($categoryId);

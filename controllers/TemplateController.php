@@ -26,6 +26,7 @@ class TemplateController {
     // Méthode pour la page de contact
     public function contact() {
         $pageTitle = "Contact - La Bouzinerie";
+        
         require dirname(__DIR__) . '/views/templates/contact.php';
     }
 

@@ -15,6 +15,7 @@
 <body>
    <div class="Navbar">
       <ul>
+         <li><a href="index.php?page=home">Front</a></li>
          <li><a href="index.php?page=admin">Quiz Admin Panel</a></li>
          <li><a href="index.php?page=admin&action=questions">Gérer les Questions</a></li>
          <li><a href="index.php?page=admin&action=categories">Gérer les catégories</a></li>

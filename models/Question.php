@@ -37,7 +37,7 @@ class Question {
                 VALUES (:question, :answers, :correct_answer, :category_id)";
         $stmt = $this->conn->prepare($sql);
     
-        $encodedAnswers = json_encode($answers); 
+        $encodedAnswers = $answers; 
     
         $stmt->bindParam(':question', $question);
         $stmt->bindParam(':answers', $encodedAnswers);
