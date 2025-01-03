@@ -1,5 +1,6 @@
 let timer;
 let score = 0;
+let correctAnswersCount = 0;
 let canAnswer = true;
 
 function startQuiz() {
@@ -49,6 +50,7 @@ function checkAnswer(isCorrect) {
     
     const responseTime = 30 - parseInt(document.getElementById('timer').textContent); // Calculate time taken
     const questionScore = calculateTimeScore(responseTime, isCorrect);
+    console.log(isCorrect)
     score += questionScore;
     
     setTimeout(nextQuestion, 1000);
@@ -65,12 +67,24 @@ function nextQuestion() {
     }
 }
 
-function showResults() {
-    const modal = document.getElementById('result-modal');
-    const scoreElement = document.getElementById('score');
-    
-    scoreElement.textContent = `Total Score: ${score}`;
-    modal.style.display = 'block';
+
+
+
+function saveScore(userId, score, quizId, totalCorrectQuestions) {
+    fetch('index.php?page=saveScore', { 
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userId, score, quizId, totalCorrectQuestions }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Score saved:', data);
+    })
+    .catch((error) => {
+        console.error('Error saving score:', error);
+    });
 }
 
 window.onload = startQuiz;
@@ -79,6 +93,7 @@ class QuizGame {
         this.currentQuestionIndex = 0;
         this.timer = null;
         this.score = 0;
+        this.correctAnswersCount = 0;
         this.canAnswer = true;
         this.totalQuestions = 0;
         this.timeLimit = 30;
@@ -184,7 +199,6 @@ class QuizGame {
         // Calculate response time
         const responseTime = 30 - parseInt(this.timerElement.textContent); // Calculate time taken
         
-        // Visual feedback
         const buttons = this.answersContainer.querySelectorAll('.answer-btn');
         buttons.forEach(button => button.disabled = true);
         
@@ -193,6 +207,7 @@ class QuizGame {
         
         if (isCorrect) {
             this.answersContainer.classList.add('correct');
+            this.correctAnswersCount++;
         } else {
             this.answersContainer.classList.add('incorrect');
         }
@@ -223,16 +238,18 @@ class QuizGame {
 
     showResults() {
         const totalScore = this.score;
-        this.scoreElement.innerHTML = `
-            <div>Total Score: ${totalScore}</div>
-        `;
+        console.log('Showing results:', totalScore);
+        let user_id = $('#user-id').val(); 
+        let quiz_id = $('#quiz-id').val(); 
+        saveScore(user_id, totalScore, quiz_id, this.correctAnswersCount);
+        this.scoreElement.innerHTML = `Total Score: ${totalScore}`;
         this.resultModal.style.display = 'block';
     }
 
     calculateTimeScore(responseTime, isCorrect) {
         const maxScore = 30;
         if (!isCorrect) return 0; // No points for incorrect answers
-        const score = Math.max(0, maxScore - (responseTime * 1)); // 3 points deducted per second
+        const score = Math.max(0, maxScore - (responseTime * 1)); // 1 points deducted per second you (can change it if you want :p )
         return score;
     }
 }

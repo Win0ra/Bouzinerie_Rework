@@ -2,7 +2,9 @@
 
 <div class="container">
     <div id="quiz-container">
-        <div id="timer">30</div>
+    <input type="hidden" name="user_id" id="user-id" value="<?php echo $_SESSION["user_id"]; ?>">
+    <input type="hidden" name="user-id" id="quiz-id" value="<?php echo $_GET["category"]; ?>">
+    <div id="timer">30</div>
         <div id="question-container">
             <h3 id="question-text"></h3>
             <div id="answers-container">

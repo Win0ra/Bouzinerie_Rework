@@ -71,31 +71,44 @@ switch ($page) {
         }
         break;
 
-        case 'contact':
-            require_once dirname(__DIR__) . '/controllers/TemplateController.php';
-            $controller = new TemplateController();
-            $controller->contact();
-            break;
-        
-        case 'gcu':
-            require_once dirname(__DIR__) . '/controllers/TemplateController.php';
-            $controller = new TemplateController();
-            $controller->cgu();
-            break;
-        
-        case 'legal-notices':
-            require_once dirname(__DIR__) . '/controllers/TemplateController.php';
-            $controller = new TemplateController();
-            $controller->legalNotices();
-            break;
-        
-        case 'footer':
-            require_once dirname(__DIR__) . '/controllers/TemplateController.php';
-            $controller = new TemplateController();
-            $footerLinks = $controller->footer();
-            break;
-        
+    case 'contact':
+        require_once dirname(__DIR__) . '/controllers/TemplateController.php';
+        $controller = new TemplateController();
+        $controller->contact();
+        break;
+    
+    case 'gcu':
+        require_once dirname(__DIR__) . '/controllers/TemplateController.php';
+        $controller = new TemplateController();
+        $controller->cgu();
+        break;
+    
+    case 'legal-notices':
+        require_once dirname(__DIR__) . '/controllers/TemplateController.php';
+        $controller = new TemplateController();
+        $controller->legalNotices();
+        break;
+    
+    case 'footer':
+        require_once dirname(__DIR__) . '/controllers/TemplateController.php';
+        $controller = new TemplateController();
+        $footerLinks = $controller->footer();
+        break;
+    case 'saveScore':
+        require_once dirname(__DIR__) . '/controllers/RankingController.php';
+        require_once dirname(__DIR__) . '/config/Database.php';
 
+        try {
+            $database = new Database();
+            $pdo = $database->getConnection();
+
+            $controller = new RankingController($pdo);
+            $controller->saveScore(); // Call the saveScore method
+        } catch (Exception $e) {
+            echo "Erreur : " . $e->getMessage();
+        }
+        break;
+    
     case 'admin':
         require_once dirname(__DIR__) . '/controllers/admin/AdminController.php';
         $controller = new AdminController();
@@ -129,4 +142,6 @@ switch ($page) {
                 break;
         }
         break;
+
+    // New case for API endpoint
 }

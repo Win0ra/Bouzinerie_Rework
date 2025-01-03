@@ -12,7 +12,7 @@ class Score
 
     public function getByUserId($userId)
     {
-        $sql = "SELECT score, total_questions, played_at FROM scores WHERE user_id = :user_id";
+        $sql = "SELECT * FROM scores WHERE user_id = :user_id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':user_id', $userId);
         $stmt->execute();
@@ -20,13 +20,14 @@ class Score
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function saveScore($userId, $score, $totalQuestions)
+    public function saveScore($userId, $score, $quiz_id,$total_correct_questions)
     {
-        $sql = "INSERT INTO scores (user_id, score, total_questions, played_at) VALUES (:user_id, :score, :total_questions, NOW())";
+        $sql = "INSERT INTO scores (user_id, score, quiz_id,total_correct_questions, played_at) VALUES (:user_id, :score,:quiz_id, :total_correct_questions, NOW())";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':user_id', $userId);
         $stmt->bindParam(':score', $score);
-        $stmt->bindParam(':total_questions', $totalQuestions);
+        $stmt->bindParam(':quiz_id', $quiz_id);
+        $stmt->bindParam(':total_correct_questions', $total_correct_questions);
         
         return $stmt->execute();
     }
