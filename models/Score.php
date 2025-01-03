@@ -19,4 +19,15 @@ class Score
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function saveScore($userId, $score, $totalQuestions)
+    {
+        $sql = "INSERT INTO scores (user_id, score, total_questions, played_at) VALUES (:user_id, :score, :total_questions, NOW())";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->bindParam(':score', $score);
+        $stmt->bindParam(':total_questions', $totalQuestions);
+        
+        return $stmt->execute();
+    }
 }

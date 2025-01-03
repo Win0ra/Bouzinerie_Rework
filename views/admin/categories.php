@@ -76,7 +76,7 @@ require dirname(__DIR__).'/templates/admin/header.php';
                         <td><?= htmlspecialchars($category['description']) ?></td>
                         <td>
                             <?php if (!empty($category['image'])): ?>
-                                <img src="/views/uploads/categories/<?= basename($category['image']) ?>" alt="Image de catégorie" width="50">
+                                <img src="/views/uploads/categories/<?= $category['image'] ?>" alt="Image de catégorie" width="50">
                             <?php endif; ?>
                         </td>
                         <td>
@@ -97,8 +97,11 @@ require dirname(__DIR__).'/templates/admin/header.php';
 
 <script>
 function editCategory(category) {
+    <?php $fileInfo = pathinfo($category['image']);?>
+
     const form = document.createElement('form');
     form.method = 'POST';
+    form.enctype = 'multipart/form-data';  
     form.innerHTML = `
         <input type="hidden" name="action" value="edit">
         <input type="hidden" name="category_id" value="${category.id}">
@@ -116,7 +119,8 @@ function editCategory(category) {
             <input type="file" class="form-control" id="edit_image" name="image" accept="image/*">
             ${
                 category.image 
-                ? `<img src="/views/uploads/categories/<?= basename($category['image']) ?>" alt="Current Image" width="100" class="mt-2">` 
+                
+                ? `<img src="/views/uploads/categories/<?= $category['image']?>" alt="Current Image" width="100" class="mt-2">` 
                 : ''
             }
         </div>

@@ -155,7 +155,7 @@ class AdminController {
                         }
                     }
     
-                    if (empty($errors) && $this->categoryModel->create($name, $description, $imagePath)) {
+                    if (empty($errors) && $this->categoryModel->create($name, $description, basename($image['name']))) {
                         $success = "Catégorie ajoutée avec succès";
                         $categories = $this->categoryModel->getAll();
                     }
@@ -165,8 +165,7 @@ class AdminController {
                     $errors[] = "Le nom et l'ID de la catégorie sont requis";
                 } else {
                     $imagePath = null;
-    
-                    // Check if a new image is uploaded
+
                     if ($image && $image['error'] === UPLOAD_ERR_OK) {
                         $uploadDir = __DIR__ . '/../../views/uploads/categories/';
                         if (!is_dir($uploadDir)) {
@@ -174,20 +173,18 @@ class AdminController {
                                 $errors[] = "Impossible de créer le répertoire des téléchargements.";
                             }
                         }
-    
                         $imagePath = $uploadDir . basename($image['name']);
                         if (!move_uploaded_file($image['tmp_name'], $imagePath)) {
                             $errors[] = "Erreur lors du déplacement du fichier téléchargé.";
                         }
                     } else {
-                        // Retain the current image if no new image is uploaded
                         $existingCategory = $this->categoryModel->getById($categoryId);
                         if ($existingCategory && isset($existingCategory['image'])) {
                             $imagePath = $existingCategory['image'];
                         }
                     }
     
-                    if (empty($errors) && $this->categoryModel->update($categoryId, $name, $description, $imagePath)) {
+                    if (empty($errors) && $this->categoryModel->update($categoryId, $name, $description, basename($image['name']))) {
                         $success = "Catégorie mise à jour avec succès";
                         $categories = $this->categoryModel->getAll();
                     } else {
