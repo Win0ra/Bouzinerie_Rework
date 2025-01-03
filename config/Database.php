@@ -1,9 +1,9 @@
 <?php
 class Database {
     private $host = "127.0.0.1";
-    private $db_name = "quiz_rework";
+    private $db_name = "bouzinerie";
     private $username = "root";
-    private $password = "19972727Ab&k";
+    private $password = "";
     private $conn;
 
     public function getConnection() {
