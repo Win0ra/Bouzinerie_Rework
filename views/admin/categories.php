@@ -5,89 +5,7 @@ require_once __DIR__ . '/../../models/Category.php';
 $errors = [];
 $success = '';
 
-try {
-    $categoryObj = new Category();
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $action = $_POST['action'] ?? '';
-
-        switch ($action) {
-            case 'add':
-                $name = trim($_POST['name'] ?? '');
-                $description = trim($_POST['description'] ?? '');
-                $image = $_FILES['image'] ?? null;
-
-                if (empty($name)) {
-                    $errors[] = "Le nom est requis";
-                } else {
-                    $imagePath = null;
-
-                    if ($image && $image['error'] === UPLOAD_ERR_OK) {
-                        $uploadDir = dirname(__DIR__) . '/uploads/categories/';
-                        if (!is_dir($uploadDir)) {
-                            mkdir($uploadDir, 0755, true);
-                        }
-                        $imagePath = $uploadDir . basename($image['name']);
-                        move_uploaded_file($image['tmp_name'], $imagePath);
-                    }
-
-                    if ($categoryObj->create($name, $description, $imagePath)) {
-                        $success = "La catégorie a été ajoutée avec succès";
-                    } else {
-                        $errors[] = "Une erreur s'est produite lors de l'ajout de la catégorie";
-                    }
-                }
-                break;
-
-            case 'edit':
-                $id = filter_var($_POST['category_id'], FILTER_VALIDATE_INT);
-                $name = trim($_POST['name'] ?? '');
-                $description = trim($_POST['description'] ?? '');
-                $image = $_FILES['image'] ?? null;
-
-                if (!$id) {
-                    $errors[] = "ID de catégorie invalide";
-                } elseif (empty($name)) {
-                    $errors[] = "Le nom est requis";
-                } else {
-                    $imagePath = null;
-
-                    if ($image && $image['error'] === UPLOAD_ERR_OK) {
-                        $uploadDir = dirname(__DIR__) . '/uploads/categories/';
-                        
-                        if (!is_dir($uploadDir)) {
-                            mkdir($uploadDir, 0755, true);
-                        }
-                        $imagePath = $uploadDir . basename($image['name']);
-                        move_uploaded_file($image['tmp_name'], $imagePath);
-                    }
-
-                    if ($categoryObj->update($id, $name, $description, $imagePath)) {
-                        $success = "La catégorie a été mise à jour avec succès";
-                    } else {
-                        $errors[] = "Une erreur s'est produite lors de la mise à jour de la catégorie";
-                    }
-                }
-                break;
-
-            case 'delete':
-                $id = filter_var($_POST['category_id'], FILTER_VALIDATE_INT);
-
-                if (!$id) {
-                    $errors[] = "ID de catégorie invalide";
-                } elseif ($categoryObj->delete($id)) {
-                    $success = "La catégorie a été supprimée avec succès";
-                }
-                break;
-        }
-    }
-
-    $categories = $categoryObj->getAll();
-
-} catch (Exception $e) {
-    $errors[] = "Une erreur s'est produite : " . $e->getMessage();
-    $categories = [];
-}
 
 require dirname(__DIR__).'/templates/admin/header.php';
 ?>
@@ -158,7 +76,7 @@ require dirname(__DIR__).'/templates/admin/header.php';
                         <td><?= htmlspecialchars($category['description']) ?></td>
                         <td>
                             <?php if (!empty($category['image'])): ?>
-                                <img src="/uploads/categories/<?= basename($category['image']) ?>" alt="Image de catégorie" width="50">
+                                <img src="/views/uploads/categories/<?= basename($category['image']) ?>" alt="Image de catégorie" width="50">
                             <?php endif; ?>
                         </td>
                         <td>
@@ -198,7 +116,7 @@ function editCategory(category) {
             <input type="file" class="form-control" id="edit_image" name="image" accept="image/*">
             ${
                 category.image 
-                ? `<img src="/uploads/categories/${encodeURIComponent(category.image)}" alt="Current Image" width="100" class="mt-2">` 
+                ? `<img src="/views/uploads/categories/<?= basename($category['image']) ?>" alt="Current Image" width="100" class="mt-2">` 
                 : ''
             }
         </div>

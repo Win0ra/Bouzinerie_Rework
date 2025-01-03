@@ -65,6 +65,8 @@
                 <div class="card">
                     <div class="cards">
                         <h5 class="card-title"><?php echo htmlspecialchars($category['name']); ?></h5>
+                        <img class="card-img-top" src="/views/uploads/categories/<?= basename($category['image']) ?>" alt="Image de <?php  htmlspecialchars($category['name']); ?>" width="50">
+
                         <a href="index.php?page=quiz&category=<?php echo $category['id']; ?>"
                             class="btn btn-primary">
                             Jouer

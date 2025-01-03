@@ -141,13 +141,13 @@ class AdminController {
     
                     // Handle image upload if provided
                     if ($image && $image['error'] === UPLOAD_ERR_OK) {
-                        $uploadDir = dirname(__DIR__) . '/uploads/categories/';
+                        $uploadDir = __DIR__ . '/../../views/uploads/categories/';
+
                         if (!is_dir($uploadDir)) {
-                            if (!mkdir($uploadDir, 0755, true) && !is_dir($uploadDir)) {
+                            if (!mkdir($uploadDir, 0777, true) && !is_dir($uploadDir)) {
                                 $errors[] = "Impossible de créer le répertoire des téléchargements.";
                             }
                         }
-                        chmod($uploadDir, 0755);
 
                         $imagePath = $uploadDir . basename($image['name']);
                         if (!move_uploaded_file($image['tmp_name'], $imagePath)) {
@@ -168,9 +168,9 @@ class AdminController {
     
                     // Check if a new image is uploaded
                     if ($image && $image['error'] === UPLOAD_ERR_OK) {
-                        $uploadDir = dirname(__DIR__) . '/uploads/categories/';
+                        $uploadDir = __DIR__ . '/../../views/uploads/categories/';
                         if (!is_dir($uploadDir)) {
-                            if (!mkdir($uploadDir, 0755, true) && !is_dir($uploadDir)) {
+                            if (!mkdir($uploadDir, 0777, true) && !is_dir($uploadDir)) {
                                 $errors[] = "Impossible de créer le répertoire des téléchargements.";
                             }
                         }
