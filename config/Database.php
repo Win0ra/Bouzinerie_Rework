@@ -1,7 +1,7 @@
 <?php
 class Database {
     private $host = "127.0.0.1";
-    private $db_name = "bouzinerie";
+    private $db_name = "bouzinerie_rework";
     private $username = "root";
     private $password = "";
     private $conn;

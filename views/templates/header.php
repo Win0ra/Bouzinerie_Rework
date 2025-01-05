@@ -10,6 +10,9 @@
     <?php if ($_GET["page"] == "quiz")  : ?> 
     <link rel="stylesheet" href="/public/css/styles-game.css" type="text/css" media="all">
     <?php endif; ?>
+    <?php if ($_GET["page"] == "contact")  : ?> 
+    <link rel="stylesheet" href="/public/css/styles-contact.css" type="text/css" media="all">
+    <?php endif; ?>
     <script src="https://kit.fontawesome.com/e98829b701.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
@@ -38,7 +41,7 @@
                 <li><a href="index.php?page=login">Connexion</a></li>
                 <li><a href="index.php?page=register">Inscription</a></li>
                 <li class="ranking">
-                    <a href="ranking" class="a-ranking" id="ranking">Classement</a>
+                    <a href="index.php?page=ranking" class="a-ranking" id="ranking">Classement</a>
 
                 </li>
             <?php endif; ?>

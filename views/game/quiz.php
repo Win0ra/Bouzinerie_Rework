@@ -15,11 +15,12 @@
                 </div>
 
             </div>
+            <div id="timer">30</div>
 
         </div>
         <div class="footer">
-           <span id="score"></span>
-            <div id="timer">30</div>
+            <span id="score"></span>
+            <!-- <div id="timer">30</div> -->
         </div>
 
         <!-- Formulaire pour relancer le quiz -->

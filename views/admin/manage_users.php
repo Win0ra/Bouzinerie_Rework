@@ -35,7 +35,7 @@ $users = $users ?? [];
                                             <?php foreach ($user['scores'] as $score): ?>
                                                 <li>
                                                     Score: <?php echo $score['score']; ?> /
-                                                    <?php echo $score['total_questions']; ?>
+                                                    <?php echo $score['total_correct_questions']; ?>
                                                     (<?php echo htmlspecialchars($score['played_at']); ?>)
                                                 </li>
                                             <?php endforeach; ?>

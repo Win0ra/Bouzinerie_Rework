@@ -1,16 +1,5 @@
 <?php require dirname(__DIR__). '/templates/header.php'; ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nous contacter - La Bouzinerie</title>
-    <link rel="stylesheet" href="/public/css/styles-contact.css" type="text/css" media="all">
-    <script src="https://kit.fontawesome.com/e98829b701.js" crossorigin="anonymous"></script>
-</head>
-
-<body>
 <div class="margin">
     <h1>Nous contacter</h1>
     <div class="Form" id="Form">
@@ -49,7 +38,4 @@
         </form>
     </div>
 </div>
-</body>
-
-</html>
 <?php require dirname(__DIR__). '/templates/footer.php'; ?>

@@ -58,7 +58,7 @@ table {
 body {
     background: linear-gradient(0deg, rgba(170, 203, 245, 1) 0%, rgba(238, 255, 254, 1) 20%, rgba(238, 255, 254, 1) 70%, rgba(170, 203, 245, 1) 100%);
     background-repeat: no-repeat;
-    height: 100%;
+    min-height: 100vh;
 }
 
 h1 {
@@ -80,7 +80,7 @@ h2 {
 
 h3 {
     font-family: Lobster Two;
-    font-size: 30px;
+    font-size: 35px;
     margin: 0px 0px 48px 0px;
 }
 
@@ -146,91 +146,83 @@ i.fa-solid.fa-magnifying-glass {
     color: #858585;
 }
 
-/* QUIZZ CARDS DEBUT */
+/* QUIZZ CARDS STYLES */
 .content {
     display: grid;
-    grid-template-columns: repeat(3, 333px);
-    grid-gap: 20px;
-    grid-template-rows: repeat(3, 400px);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.25);
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    height: 400px;
+    width: 100%;
 }
 
 .cards {
-    text-align: center;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    /* flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: stretch; */
-    height: 100%;
+    position: relative;
 }
 
 .card-img-top {
     width: 100%;
-    height: 278px; /* Pour laisser de la place pour le titre et le bouton */
-    object-fit: cover; /* Pour que l'image couvre bien l'espace sans être déformée */
+    height: calc(100% - 122px); /* 72px pour le titre + 50px pour le bouton */
+    object-fit: cover;
+}
+
+.card-title {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px;
+    margin: 0;
+    font-family: 'Lobster Two', cursive;
+    font-size: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 72px;
+}
+
+.btn.btn-primary {
+    background: linear-gradient(#3565BC, #114198);
+    color: white;
+    font-family: 'Bellota', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    height: 50px;
+    margin: 0;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Animation Card Swing 3D */
 @keyframes cardSwing {
-    0% {
-        transform: rotateY(0deg) scale(1);
-    }
-    25% {
-        transform: rotateY(-10deg) scale(1.05);
-    }
-    50% {
-        transform: rotateY(10deg) scale(1.1);
-    }
-    75% {
-        transform: rotateY(-5deg) scale(1.05);
-    }
-    100% {
-        transform: rotateY(0deg) scale(1);
-    }
-}
-
-.card {
-    background-size: cover;
-    width: 333px;
-    height: 400px;
-    font-family: "Lobster Two";
-    overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 0px 0px 10px 1px hsl(0deg 0% 0% / 25%);
-    perspective: 1000px;
-    transform-style: preserve-3d;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    0% { transform: rotateY(0deg) scale(1); }
+    25% { transform: rotateY(-5deg) scale(1.03); }
+    50% { transform: rotateY(5deg) scale(1.05); }
+    75% { transform: rotateY(-3deg) scale(1.03); }
+    100% { transform: rotateY(0deg) scale(1); }
 }
 
 .card:hover {
-    animation: cardSwing 1s ease-in-out;
+    animation: cardSwing 0.8s ease-in-out;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-.card-title {
-    background: rgb(255 255 255 / 95%);
-    width: 100%;
-    height: 72px;
-    text-align: center;
-    margin: 0px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-}
-
-
-a.btn.btn-primary {
-    height: 50px;
-    background: linear-gradient(#3565BC, #114198);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: Bellota;
-    font-size: 20px;
-    font-weight: bold;
 }
 
 /* RANKING DEBUT */
@@ -309,13 +301,26 @@ button.ranking {
     /* Cards Grid */
     .content {
         grid-template-columns: repeat(2, 1fr);
-        grid-gap: 15px;
-        grid-template-rows: auto;
+        gap: 15px;
+        padding: 15px;
     }
 
     .card {
-        width: 100%;
         height: 350px;
+    }
+
+    .card-title {
+        font-size: 22px;
+        height: 60px;
+    }
+
+    .card-img-top {
+        height: calc(100% - 110px);
+    }
+
+    .btn.btn-primary {
+        height: 50px;
+        font-size: 16px;
     }
 
     /* Buttons */
@@ -326,7 +331,7 @@ button.ranking {
     }
 }
 
-/* Version mobile (max-width: 767px) */
+/* Version mobile */
 @media screen and (max-width: 767px) {
     h1 {
         font-size: 32px;
@@ -359,20 +364,31 @@ button.ranking {
     /* Cards Grid */
     .content {
         grid-template-columns: 1fr;
-        grid-gap: 15px;
+        gap: 15px;
+        padding: 10px;
     }
 
     .card {
-        height: 300px;
+        height: 320px;
+        max-width: 100%;
     }
 
     .card-title {
-        height: 60px;
-        font-size: 24px;
+        font-size: 20px;
+        height: 50px;
+    }
+
+    .card-img-top {
+        height: calc(100% - 100px);
+    }
+
+    .btn.btn-primary {
+        height: 50px;
+        font-size: 16px;
     }
 
     /* Buttons */
-    button.ranking { 
+    button.ranking {
         width: 90%;
         font-size: 18px;
         padding: 8px 0;
@@ -382,3 +398,4 @@ button.ranking {
         padding: 0 0 0 15px;
     }
 }
+

@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -7,7 +5,7 @@
     <link rel="stylesheet" href="/public/css/styles-footer.css" type="text/css" media="all">
 </head>
 
-<body>
+
     <footer class="footer">
         <div class="foot-left">
             <p class="txt-foot" id="foot"><a href="/public/index.php?page=home">Accueil</a></p>
@@ -38,6 +36,4 @@
             </div>
         </div>
     </footer>
-</body>
 
-</html>

@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -11,7 +9,7 @@
 </head>
 
 
-<body>
+
     <div class="margin">
         <!-- PRESENTATION -->
         <div class="Presentation">
@@ -77,7 +75,6 @@
 
         </div>
     </div>
-</body>
+
 <!-- enlever les balises body et html -->
 
-</html>

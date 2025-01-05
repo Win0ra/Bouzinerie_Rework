@@ -21,13 +21,13 @@
 
     <form method="POST">
         <div class="form-group mb-3">
-            <label for="question">Question</label>
+            <label for="question">Question</label><br/>
             <input type="text" class="form-control" id="question" name="question"
                 value="<?php echo isset($question) ? htmlspecialchars($question['question']) : ''; ?>" required>
         </div>
 
         <div class="form-group mb-3">
-            <label>Réponses</label>
+            <label> Ajouter les réponses</label><br/>
             <?php
             $answers = isset($question['answers']) && is_string($question['answers'])
                 ? json_decode($question['answers'], true)

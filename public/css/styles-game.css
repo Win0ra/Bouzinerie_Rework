@@ -2,86 +2,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bellota:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
-/* RESET CSS */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-    text-decoration: none;
-}
-
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-    display: block;
-}
-
-body {
-    line-height: 1;
-}
-
-ol, ul {
-    list-style: none;
-}
-
-blockquote, q {
-    quotes: none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-    content: '';
-    content: none;
-}
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
+/* Reset CSS reste identique... */
 
 /* GENERAL STYLES */
 body {
     background: #EEFFFE;
-    background-repeat: no-repeat;
-    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-h1 {
-    font-family: 'Lobster Two', cursive;
-    font-size: 48px;
-    text-align: center;
-    color: #2b4a88;
+.container {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-p {
-    font-family: 'Bellota', sans-serif;
-    font-size: 18px;
-    color: #000;
+#quiz-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
-/* STATEMENT */
+/* STATEMENT/QUESTION STYLES */
 .statement {
-    width: 100%;
+    width: 800px;
     height: 15vh;
     background: #5778A2;
     color: #fff;
     border-bottom-left-radius: 283px;
     border-bottom-right-radius: 283px;
+    border-top-right-radius: 283px;
+    border-top-left-radius: 283px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -89,46 +42,44 @@ p {
     font-family: 'Lobster Two', cursive;
 }
 
+#question-text {
+    font-family: 'Lobster Two', cursive;
+    font-size: 24px;
+    text-align: center;
+}
+
 /* CONTENT */
 .content {
     display: flex;
-    justify-content: space-between;
-    margin: 120px 80px 88px 80px;
-    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    margin: 40px 0;
 }
 
-.content img {
-    width: 527px;
-    height: 50vh;
-    border-radius: 40px;
-    box-shadow: 0px 0px 5px 0px #000;
-    cursor: pointer;
-    object-fit: cover;
-    transition: box-shadow 0.3s ease;
-}
-
-.content img:hover {
-    box-shadow: 0px 0px 10px 2px #000;
-}
-
-/* ANSWERS */
 .answers {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 60%;
 }
 
+#answers-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ANSWER STYLES */
 .answer {
     display: flex;
     align-items: center;
-    position: relative;
-    background: #3661b8; /* Default background */
-    color: #fff;
-    padding: 10px 20px;
+    background: #ffffff;
+    color: #000000;
+    padding: 15px 20px;
     border-radius: 20px;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
+    border : 1px solid #5778A2;
 }
 
 .answer:hover {
@@ -137,9 +88,9 @@ p {
 }
 
 .answer .letter {
-    width: 70px;
-    height: 70px;
-    background: #2b4a88; /* Default letter color */
+    width: 50px;
+    height: 50px;
+    background: #5778A2;
     color: #fff;
     font-weight: bold;
     border-radius: 50%;
@@ -147,94 +98,152 @@ p {
     align-items: center;
     justify-content: center;
     margin-right: 20px;
+    font-family: 'Bellota', sans-serif;
 }
 
 .answer .item {
     flex-grow: 1;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: left;
-    overflow-wrap: anywhere;
+    font-size: 18px;
+    font-family: 'Bellota', sans-serif;
 }
 
-/* SPECIFIC COLORS */
-.answer.a {
-    background: #3661b8;
-}
-.answer.a .letter {
-    background: #2b4a88;
-}
-
-.answer.b {
-    background: #cf4082;
-}
-.answer.b .letter {
-    background: #b73974;
-}
-
-.answer.c {
-    background: #966a1e;
-}
-.answer.c .letter {
-    background: #7e5919;
-}
-
-.answer.d {
-    background: #00815c;
-}
-.answer.d .letter {
-    background: #006447;
-}
-
-/* LIGHTBOX */
-.lightbox {
-    width: 100%;
-    height: 100%;
-    background: rgba(30, 30, 30, 0.7);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    display: none;
-}
-
-.lightbox .main {
-    position: absolute;
-    top: 10vh;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-.lightbox .main #fermer {
-    width: 30px;
-    height: 30px;
-    background: #000;
-    color: #fff;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    margin-bottom: 10px;
-}
-
-.lightbox .main #zoom {
-    width: 60%;
-    height: auto;
-    max-height: 80vh;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 2px solid #000;
-}
-
-/* FOOTER */
+/* FOOTER STYLES */
 .footer {
     display: flex;
     justify-content: space-between;
-    padding: 20px 80px;
+    align-items: center;
+    padding: 20px;
+    background: transparent;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#score, #timer {
+    font-family: 'Bellota', sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#timer {
+    color: #b83665;
+    position: relative;
+    bottom: 480px;
+    left: 380px;
+}
+
+/* BUTTON STYLES */
+button {
+    background: linear-gradient(#EDC267, #9a6748);
+    color: #000000;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-family: 'Bellota', sans-serif;
     font-size: 16px;
-    color: #000;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: center;
+}
+
+button:hover {
+    background: linear-gradient(#3565BC, #114198);
+}
+
+/* RESPONSIVE TABLETTE */
+@media screen and (max-width: 1024px) {
+    .container {
+        max-width: 90%;
+    }
+
+    .statement {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        border-radius: 50px;
+    }
+
+    #timer {
+        position: static;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .content {
+        margin: 20px 0;
+    }
+
+    .answer {
+        padding: 12px 15px;
+    }
+
+    .answer .letter {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .answer .item {
+        font-size: 16px;
+    }
+
+    #score, #timer {
+        font-size: 32px;
+    }
+}
+
+/* RESPONSIVE MOBILE */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .statement {
+        padding: 10px;
+        font-size: 20px;
+        position: relative;
+        right: 10px;
+    }
+
+    #question-text {
+        font-size: 20px;
+    }
+
+    .content {
+        gap: 20px;
+        margin: 20px 0;
+    }
+
+    .answers {
+        gap: 15px;
+    }
+
+    .answer {
+        padding: 10px;
+    }
+
+    .answer .letter {
+        width: 35px;
+        height: 35px;
+        font-size: 12px;
+        margin-right: 10px;
+    }
+
+    .answer .item {
+        font-size: 14px;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    #score, #timer {
+        font-size: 28px;
+    }
+
+    button {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
 }

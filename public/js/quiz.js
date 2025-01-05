@@ -92,21 +92,21 @@ function saveScore(userId, score, quizId, totalCorrectQuestions) {
         dialog.style.textAlign = 'center';
         dialog.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
         dialog.innerHTML = `
-            <p>your Score is : ${score}</p>
+            <p>Votre score est de : ${score} points ! BRAVO !</p>
             <p>${data.message}</p>
-            <button id="retakeQuiz" style="margin: 10px; padding: 10px;">Retake Quiz</button>
-            <button id="backToGameList" style="margin: 10px; padding: 10px;">Back to Game List</button>
+            <button id="retakeQuiz" style="margin: 10px; padding: 10px;">Recommencer le quiz</button>
+            <button id="backToGameList" style="margin: 10px; padding: 10px;">Retour aux quiz</button>
         `;
 
         // Append dialog to the body
         document.body.appendChild(dialog);
 
-        // Event listeners for the buttons
+        // Event listeners pour les buttons
         document.getElementById('retakeQuiz').onclick = () => {
-            location.reload(); // Reload the page
+            location.reload(); // Reload de la page
         };
         document.getElementById('backToGameList').onclick = () => {
-            window.location.href = 'index.php?page=home'; // Redirect to the game list
+            window.location.href = 'index.php?page=home'; // Redirection vers la page d'accueil
         };
     })
     .catch((error) => {
@@ -134,7 +134,7 @@ class QuizGame {
         this.resultModal = document.getElementById('result-modal');
         this.scoreElement = document.getElementById('score');
         
-        // Validate required elements
+        // Validation des éléments requis
         if (!this.validateElements()) {
             console.error('Required DOM elements not found');
             return;
@@ -154,7 +154,7 @@ class QuizGame {
 
     start() {
         if (!this.validateQuestions()) {
-            console.error('No questions available');
+            console.error('Pas de questions disponibles');
             return;
         }
         
@@ -170,7 +170,7 @@ class QuizGame {
 
     showQuestion(question) {
         if (!question || !question.answers) {
-            console.error('Invalid question format');
+            console.error('Format de question invalide');
             return;
         }
 
@@ -187,7 +187,7 @@ class QuizGame {
                 // Create the letter <p> element
                 const letter = document.createElement('p');
                 letter.className = 'letter ' +(String.fromCharCode(65 + index)).toLowerCase();
-                letter.textContent = String.fromCharCode(65 + index); // Convert index to A, B, C, etc.
+                letter.textContent = String.fromCharCode(65 + index); // Converti l'index en A, B, C, etc.
             
                 // Create the item <p> element
                 const item = document.createElement('p');
@@ -240,8 +240,8 @@ class QuizGame {
         this.stopTimer();
         this.canAnswer = false;
         
-        // Calculate response time
-        const responseTime = 30 - parseInt(this.timerElement.textContent); // Calculate time taken
+        // Calculer le temps de réponse
+        const responseTime = 30 - parseInt(this.timerElement.textContent); // Calcule le temps pris pour répondre
         
         const buttons = this.answersContainer.querySelectorAll('.answer-btn');
         buttons.forEach(button => button.disabled = true);
@@ -292,8 +292,8 @@ class QuizGame {
 
     calculateTimeScore(responseTime, isCorrect) {
         const maxScore = 30;
-        if (!isCorrect) return 0; // No points for incorrect answers
-        const score = Math.max(0, maxScore - (responseTime * 1)); // 1 points deducted per second you (can change it if you want :p )
+        if (!isCorrect) return 0; // Pas de points pour une réponse fausse
+        const score = Math.max(0, maxScore - (responseTime * 1)); // 1 point déduit par seconde écoulée
         return score;
     }
 }

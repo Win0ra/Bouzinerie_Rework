@@ -48,6 +48,12 @@
                 </div>
                 <button type="submit" class="register"><i class="fa-solid fa-pen-to-square" id="i-white"></i>S'inscrire</button>
             </form>
+            <div class="checkbox">
+                <input type="checkbox" name="checkbox" id="checkbox" required>
+                <p class="cgu">J'accepte les Conditions Générales d'Utilisation et la Politique de Confidentialité.
+                    Je reconnais que mes données seront traitées conformément à cette politique.
+                    Je comprends que je peux me désinscrire à tout moment.</p>
+            </div><br/>
 
             <div class="mt-3 text-center">
                 <p>Déjà inscrit? 

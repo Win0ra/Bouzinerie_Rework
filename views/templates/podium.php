@@ -25,6 +25,4 @@
         <p>Aucun classement disponible.</p>
     <?php endif; ?>
 </div>
-
-
 </div> 
