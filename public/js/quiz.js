@@ -3,75 +3,198 @@ let score = 0;
 let correctAnswersCount = 0;
 let canAnswer = true;
 
-function startQuiz() {
-    showQuestion(questions[currentQuestionIndex]);
-    startTimer();
-}
+class QuizGame {
+    constructor() {
+        this.currentQuestionIndex = 0;
+        this.timer = null;
+        this.score = 0;
+        this.correctAnswersCount = 0;
+        this.canAnswer = true;
+        this.totalQuestions = 0;
+        this.timeLimit = 30;
+        this.startTime = null;
 
-function showQuestion(question) {
-    const questionContainer = document.getElementById('question-text');
-    const answersContainer = document.getElementById('answers-container');
-    
-    questionContainer.textContent = question.question;
-    answersContainer.innerHTML = '';
-    console.log(question.answers);
-    const answers = JSON.parse(question.answers);
-    answers.forEach((answer, index) => {
-        const button = document.createElement('a');
-        button.className = 'answer';
-        button.textContent = answer;
-        button.onclick = () => checkAnswer(index === question.correct_answer);
-        answersContainer.appendChild(button);
-    });
-    
-    canAnswer = true;
-}
+        // Eléments du DOM
+        this.questionContainer = document.getElementById('question-text');
+        this.answersContainer = document.getElementById('answers-container');
+        this.timerElement = document.getElementById('timer');
+        this.progressElement = document.getElementById('progress');
+        this.resultModal = document.getElementById('result-modal');
+        this.scoreElement = document.getElementById('score');
 
-function startTimer() {
-    let timeLeft = 30;
-    const timerElement = document.getElementById('timer');
-    
-    timer = setInterval(() => {
-        timeLeft--;
-        timerElement.textContent = timeLeft;
-        
-        if (timeLeft <= 0) {
-            clearInterval(timer);
-            nextQuestion();
+        // Validation des éléments requis
+        if (!this.validateElements()) {
+            console.error('Eléments DOM manquants');
+            return;
         }
-    }, 1000);
-}
+    }
 
-function checkAnswer(isCorrect) {
-    if (!canAnswer) return;
-    
-    clearInterval(timer);
-    canAnswer = false;
-    
-    const responseTime = 30 - parseInt(document.getElementById('timer').textContent); // Calculate time taken
-    const questionScore = calculateTimeScore(responseTime, isCorrect);
-    console.log(isCorrect)
-    score += questionScore;
-    
-    setTimeout(nextQuestion, 1000);
-}
+    validateElements() {
+        const requiredElements = [
+            this.questionContainer,
+            this.answersContainer,
+            this.timerElement,
+            this.resultModal,
+            this.scoreElement
+        ];
+        return requiredElements.every(el => el !== null);
+    }
 
-function nextQuestion() {
-    currentQuestionIndex++;
-    
-    if (currentQuestionIndex >= questions.length) {
-        showResults();
-    } else {
-        showQuestion(questions[currentQuestionIndex]);
-        startTimer();
+    start() {
+        if (!this.validateQuestions()) {
+            console.error('Pas de questions disponibles');
+            return;
+        }
+
+        this.totalQuestions = questions.length;
+        this.showQuestion(questions[this.currentQuestionIndex]);
+        this.startTimer();
+        this.updateProgress();
+    }
+
+    validateQuestions() {
+        return Array.isArray(questions) && questions.length > 0;
+    }
+
+    showQuestion(question) {
+        if (!question || !question.answers) {
+            console.error('Format de question invalide');
+            return;
+        }
+
+        this.startTime = Date.now();
+        this.questionContainer.textContent = question.question;
+        this.answersContainer.innerHTML = '';
+
+        try {
+            const answers = JSON.parse(question.answers);
+            answers.forEach((answer, index) => {
+                const button = document.createElement('a');
+                button.className = 'answer ' + (String.fromCharCode(65 + index)).toLowerCase();
+                button.dataset.index = index;
+
+                // Crée la lettre via <p>
+                const letter = document.createElement('p');
+                letter.className = 'letter ' +(String.fromCharCode(65 + index)).toLowerCase();
+                letter.textContent = String.fromCharCode(65 + index); // Converti l'index en A, B, C, etc.
+
+                // Crée <p>
+                const item = document.createElement('p');
+                item.className = 'item';
+                item.textContent = answer;
+
+                // Ajoute <p> à <a>
+                button.appendChild(letter);
+                button.appendChild(item);
+
+                // Configure l'event onclick pour vérifier la réponse
+                button.onclick = () => this.checkAnswer(index === question.correct_answer, question.correct_answer);
+
+                // Ajoute l'élément <a> au container des réponses
+                this.answersContainer.appendChild(button);
+            });
+        } catch (error) {
+            console.error('Erreur dans l\'analyse des réponses:', error);
+            return;
+        }
+
+        this.canAnswer = true;
+    }
+
+    startTimer() {
+        let timeLeft = this.timeLimit;
+        this.timerElement.textContent = timeLeft;
+
+        this.timer = setInterval(() => {
+            timeLeft--;
+            this.timerElement.textContent = timeLeft;
+
+            if (timeLeft <= 0) {
+                this.stopTimer();
+                this.nextQuestion();
+            }
+        }, 1000);
+    }
+
+    stopTimer() {
+        if (this.timer) {
+            clearInterval(this.timer);
+            this.timer = null;
+        }
+    }
+
+    checkAnswer(isCorrect, correctAnswerIndex) {
+        if (!this.canAnswer) return;
+
+        this.stopTimer();
+        this.canAnswer = false;
+
+        const responseTime = 30 - parseInt(this.timerElement.textContent);
+        const questionScore = this.calculateTimeScore(responseTime, isCorrect);
+        this.score += questionScore;
+
+        // Mettre en évidence la bonne réponse et désactiver les autres
+        const answers = this.answersContainer.querySelectorAll('.answer');
+        answers.forEach(answer => {
+            const index = parseInt(answer.dataset.index);
+            if (index === correctAnswerIndex) {
+                answer.classList.add('correct-answer');
+            } else {
+                answer.classList.add('disabled-answer');
+            }
+        });
+
+        if (isCorrect) {
+            this.correctAnswersCount++;
+        }
+
+        // Attendre 2 secondes avant de passer à la question suivante
+        setTimeout(() => {
+            answers.forEach(answer => {
+                answer.classList.remove('correct-answer', 'disabled-answer');
+            });
+            this.nextQuestion();
+        }, 2000);
+    }
+
+    nextQuestion() {
+        this.currentQuestionIndex++;
+
+        if (this.currentQuestionIndex >= this.totalQuestions) {
+            this.showResults();
+        } else {
+            this.showQuestion(questions[this.currentQuestionIndex]);
+            this.startTimer();
+            this.updateProgress();
+        }
+    }
+
+    updateProgress() {
+        if (this.progressElement) {
+            this.progressElement.textContent = `Question ${this.currentQuestionIndex + 1} of ${this.totalQuestions}`;
+        }
+    }
+
+    showResults() {
+        const totalScore = this.score;
+        console.log('Showing results:', totalScore);
+        let user_id = $('#user-id').val();
+        let quiz_id = $('#quiz-id').val();
+        saveScore(user_id, totalScore, quiz_id, this.correctAnswersCount);
+        this.scoreElement.innerHTML = `Total Score: ${totalScore}`;
+        this.resultModal.style.display = 'block';
+    }
+
+    calculateTimeScore(responseTime, isCorrect) {
+        const maxScore = 30;
+        if (!isCorrect) return 0; // Pas de points pour une réponse fausse
+        const score = Math.max(0, maxScore - (responseTime * 1)); // 1 point déduit par seconde écoulée
+        return score;
     }
 }
 
-
-
-
 function saveScore(userId, score, quizId, totalCorrectQuestions) {
-    fetch('index.php?page=saveScore', { 
+    fetch('index.php?page=saveScore', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -98,7 +221,7 @@ function saveScore(userId, score, quizId, totalCorrectQuestions) {
             <button id="backToGameList" style="margin: 10px; padding: 10px;">Retour aux quiz</button>
         `;
 
-        // Append dialog to the body
+        // Ajoute la boite de dialogue à la page
         document.body.appendChild(dialog);
 
         // Event listeners pour les buttons
@@ -114,191 +237,6 @@ function saveScore(userId, score, quizId, totalCorrectQuestions) {
     });
 }
 
-window.onload = startQuiz;
-class QuizGame {
-    constructor() {
-        this.currentQuestionIndex = 0;
-        this.timer = null;
-        this.score = 0;
-        this.correctAnswersCount = 0;
-        this.canAnswer = true;
-        this.totalQuestions = 0;
-        this.timeLimit = 30;
-        this.startTime = null;
-        
-        // DOM Elements
-        this.questionContainer = document.getElementById('question-text');
-        this.answersContainer = document.getElementById('answers-container');
-        this.timerElement = document.getElementById('timer');
-        this.progressElement = document.getElementById('progress');
-        this.resultModal = document.getElementById('result-modal');
-        this.scoreElement = document.getElementById('score');
-        
-        // Validation des éléments requis
-        if (!this.validateElements()) {
-            console.error('Required DOM elements not found');
-            return;
-        }
-    }
-
-    validateElements() {
-        const requiredElements = [
-            this.questionContainer,
-            this.answersContainer,
-            this.timerElement,
-            this.resultModal,
-            this.scoreElement
-        ];
-        return requiredElements.every(el => el !== null);
-    }
-
-    start() {
-        if (!this.validateQuestions()) {
-            console.error('Pas de questions disponibles');
-            return;
-        }
-        
-        this.totalQuestions = questions.length;
-        this.showQuestion(questions[this.currentQuestionIndex]);
-        this.startTimer();
-        this.updateProgress();
-    }
-
-    validateQuestions() {
-        return Array.isArray(questions) && questions.length > 0;
-    }
-
-    showQuestion(question) {
-        if (!question || !question.answers) {
-            console.error('Format de question invalide');
-            return;
-        }
-
-        this.startTime = Date.now();
-        this.questionContainer.textContent = question.question;
-        this.answersContainer.innerHTML = '';
-        
-        try {
-            const answers = JSON.parse(question.answers);
-            answers.forEach((answer, index) => {
-                const button = document.createElement('a');
-                button.className = 'answer ' + (String.fromCharCode(65 + index)).toLowerCase();
-            
-                // Create the letter <p> element
-                const letter = document.createElement('p');
-                letter.className = 'letter ' +(String.fromCharCode(65 + index)).toLowerCase();
-                letter.textContent = String.fromCharCode(65 + index); // Converti l'index en A, B, C, etc.
-            
-                // Create the item <p> element
-                const item = document.createElement('p');
-                item.className = 'item';
-                item.textContent = answer;
-            
-                // Append <p> elements to the <a> element
-                button.appendChild(letter);
-                button.appendChild(item);
-            
-                // Set up the onclick event
-                button.onclick = () => this.checkAnswer(index === question.correct_answer);
-            
-                // Append the <a> element to the answers container
-                this.answersContainer.appendChild(button);
-            });
-        } catch (error) {
-            console.error('Error parsing answers:', error);
-            return;
-        }
-        
-        this.canAnswer = true;
-    }
-
-    startTimer() {
-        let timeLeft = this.timeLimit;
-        this.timerElement.textContent = timeLeft;
-        
-        this.timer = setInterval(() => {
-            timeLeft--;
-            this.timerElement.textContent = timeLeft;
-            
-            if (timeLeft <= 0) {
-                this.stopTimer();
-                this.nextQuestion();
-            }
-        }, 1000);
-    }
-
-    stopTimer() {
-        if (this.timer) {
-            clearInterval(this.timer);
-            this.timer = null;
-        }
-    }
-
-    checkAnswer(isCorrect) {
-        if (!this.canAnswer) return;
-        
-        this.stopTimer();
-        this.canAnswer = false;
-        
-        // Calculer le temps de réponse
-        const responseTime = 30 - parseInt(this.timerElement.textContent); // Calcule le temps pris pour répondre
-        
-        const buttons = this.answersContainer.querySelectorAll('.answer-btn');
-        buttons.forEach(button => button.disabled = true);
-        
-        const questionScore = this.calculateTimeScore(responseTime, isCorrect);
-        this.score += questionScore;
-        
-        if (isCorrect) {
-            this.answersContainer.classList.add('correct');
-            this.correctAnswersCount++;
-        } else {
-            this.answersContainer.classList.add('incorrect');
-        }
-        
-        setTimeout(() => {
-            this.answersContainer.classList.remove('correct', 'incorrect');
-            this.nextQuestion();
-        }, 1000);
-    }
-
-    nextQuestion() {
-        this.currentQuestionIndex++;
-        
-        if (this.currentQuestionIndex >= this.totalQuestions) {
-            this.showResults();
-        } else {
-            this.showQuestion(questions[this.currentQuestionIndex]);
-            this.startTimer();
-            this.updateProgress();
-        }
-    }
-
-    updateProgress() {
-        if (this.progressElement) {
-            this.progressElement.textContent = `Question ${this.currentQuestionIndex + 1} of ${this.totalQuestions}`;
-        }
-    }
-
-    showResults() {
-        const totalScore = this.score;
-        console.log('Showing results:', totalScore);
-        let user_id = $('#user-id').val(); 
-        let quiz_id = $('#quiz-id').val(); 
-        saveScore(user_id, totalScore, quiz_id, this.correctAnswersCount);
-        this.scoreElement.innerHTML = `Total Score: ${totalScore}`;
-        this.resultModal.style.display = 'block';
-    }
-
-    calculateTimeScore(responseTime, isCorrect) {
-        const maxScore = 30;
-        if (!isCorrect) return 0; // Pas de points pour une réponse fausse
-        const score = Math.max(0, maxScore - (responseTime * 1)); // 1 point déduit par seconde écoulée
-        return score;
-    }
-}
-
-// Initialize and start the quiz
 window.onload = () => {
     const quiz = new QuizGame();
     quiz.start();

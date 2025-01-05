@@ -134,7 +134,7 @@ body {
 /* BUTTON STYLES */
 button {
     background: linear-gradient(#EDC267, #9a6748);
-    color: #000000;
+    color: #ffffff;
     border: none;
     padding: 15px 30px;
     border-radius: 10px;
@@ -246,4 +246,33 @@ button:hover {
         padding: 12px 25px;
         font-size: 14px;
     }
+}
+
+/* Style pour la bonne réponse */
+.answer.correct-answer {
+    background: #4CAF50;
+    transform: scale(1.02);
+    box-shadow: 0 0 8px rgba(87, 120, 162, 0.4);
+}
+
+.answer.correct-answer .letter {
+    background: #ffffff;
+    color: #5778A2;
+}
+
+.answer.correct-answer .item {
+    color: #ffffff;
+}
+
+/* Style pour les réponses désactivées */
+.answer.disabled-answer {
+    opacity: 0.6;
+    transform: none;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.answer.disabled-answer:hover {
+    transform: none;
+    box-shadow: none;
 }
