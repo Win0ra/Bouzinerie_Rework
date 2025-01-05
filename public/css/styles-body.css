@@ -146,6 +146,23 @@ i.fa-solid.fa-magnifying-glass {
     color: #858585;
 }
 
+/* .search-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+} */
+
+/* .no-results, .error {
+    text-align: center;
+    width: 100%;
+    padding: 1rem;
+} */
+
+.error {
+    color: red;
+}
+
 /* QUIZZ CARDS STYLES */
 .content {
     display: grid;

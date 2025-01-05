@@ -6,7 +6,8 @@
 
 /* GENERAL STYLES */
 body {
-    background: #EEFFFE;
+    background: linear-gradient(0deg, rgba(170, 203, 245, 1) 0%, rgba(238, 255, 254, 1) 20%, rgba(238, 255, 254, 1) 70%, rgba(170, 203, 245, 1) 100%);
+    background-repeat: no-repeat;
     min-height: 100vh;
     display: flex;
     flex-direction: column;

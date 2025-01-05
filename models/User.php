@@ -1,31 +1,39 @@
 <?php
-require_once dirname(__DIR__). '/config/Database.php';
+require_once dirname(__DIR__). '/config/Database.php'; // Inclusion de la configuration de la base de données
+
 
 class User {
+    // Propriété pour stocker la connexion à la base de données
     private $conn;
-
+    // Constructeur : initialise la connexion à la base de données
     public function __construct() {
-        $database = new Database();
-        $this->conn = $database->getConnection();
+        $database = new Database(); // Instancie la classe Database
+        $this->conn = $database->getConnection(); // Récupère la connexion PDO
     }
 
+    // Méthode pour créer un nouvel utilisateur
     public function create($email, $password,$pseudo) {
         try {
+    // Requête SQL pour insérer un nouvel utilisateur
             $query = "INSERT INTO users (email, password,pseudo) VALUES (:email, :password,:pseudo)";
-            $stmt = $this->conn->prepare($query);
+            $stmt = $this->conn->prepare($query); // Préparation de la requête SQL
+    // Exécution de la requête avec les paramètres liés
             return $stmt->execute([
                 ':email' => $email,
                 ':password' => $password,
                 ':pseudo' => $pseudo
-            ]);
+            ]); 
         } catch (PDOException $e) {
+    // Enregistre l'erreur dans les logs en cas de problème SQL
             error_log("Error creating user: " . $e->getMessage());
             return false;
         }
     }
+    // Méthode pour vérifier les identifiants d'un utilisateur
 
     public function verify($email, $password) {
         try {
+    // Requête SQL pour récupérer un utilisateur par email
             $query = "SELECT * FROM users WHERE email = :email";
             $stmt = $this->conn->prepare($query);
             $stmt->execute([':email' => $email]);
@@ -54,16 +62,17 @@ class User {
     }
     public function getLeaderboard($limit = 10) {
         $query = "SELECT u.email, s.score, s.total_questions, s.played_at 
-                  FROM users u
-                  JOIN scores s ON u.id = s.user_id
-                  ORDER BY s.score DESC, s.played_at ASC
-                  LIMIT :limit";
+                FROM users u
+                JOIN scores s ON u.id = s.user_id
+                ORDER BY s.score DESC, s.played_at ASC
+                LIMIT :limit"; // Requête SQL pour récupérer les scores des utilisateurs
     
-        $stmt = $this->conn->prepare($query);
+        $stmt = $this->conn->prepare($query); // Préparation de la requête
         $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    // Récupère les informations d'un utilisateur par son ID
     public function isAdmin($userId) {
         try {
             $query = "SELECT is_admin FROM users WHERE id = :id";
@@ -75,7 +84,7 @@ class User {
             return false;
         }
     }
-    
+    // 
     public function getAll()
     {
         $sql = "SELECT id, email, is_admin, created_at FROM users";

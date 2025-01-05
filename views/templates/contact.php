@@ -3,7 +3,7 @@
 <div class="margin">
     <h1>Nous contacter</h1>
     <div class="Form" id="Form">
-        <form name="Contact" method="post" action="/public/contact-handler.php" enctype="application/x-www-form-urlencoded">
+    <form name="Contact" method="post" action="mailto:contact.bouzinerie@gmail.com" enctype="text/plain">
             <div class="FirstName">
                 <h2>Prénom</h2><br>
                 <input type="text" name="FirstName" id="Prenom" placeholder="Jean-Bouzin-Le-Meilleur" class="champ personne" required>
