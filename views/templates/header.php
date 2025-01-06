@@ -4,8 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
-
     <link rel="stylesheet" href="/public/css/styles-navbar.css" type="text/css" media="all"> 
     <?php if ($_GET["page"] == "quiz")  : ?> 
     <link rel="stylesheet" href="/public/css/styles-game.css" type="text/css" media="all">
@@ -19,7 +17,7 @@
 
 </head>
 
-<body>
+
     <div class="Navbar">
         <ul>
             <li><a href="index.php?page=home">Accueil</a></li>
@@ -34,13 +32,12 @@
 
                 <?php endif; ?>
 
-                <li><a href="#">Mon Compte</a></li>
                 <li><a href="index.php?page=logout">Déconnexion</a></li>
 
             <?php else : ?>
                 <li><a href="index.php?page=login">Connexion</a></li>
                 <li><a href="index.php?page=register">Inscription</a></li>
-                <li class="ranking">
+                <li>
                     <a href="index.php?page=ranking" class="a-ranking" id="ranking">Classement</a>
 
                 </li>
@@ -49,11 +46,17 @@
         <div class="logo"><a href="index.php?page=home"><img src="/public/img/logo_bleu.svg" alt="logo_la_bouzinerie">
         </a></div>
     </div>
-    <!-- TO DO Ajouter la phrase  Connecté en tant que Nom prenom -->
+    <span>
+    Vous êtes bien connecté 
+    <?php 
+        if (isset($_SESSION['user_id']) && isset($userModel)) {
+            echo htmlspecialchars($userModel->getUsernameById($_SESSION['user_id']), ENT_QUOTES, 'UTF-8');
+        } else {
+            echo '';
+        }
+    ?>
+</span>
+    
     </div>
 
 
-
-</body>
-
-</html>

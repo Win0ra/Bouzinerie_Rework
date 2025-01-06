@@ -40,6 +40,7 @@ class AuthController {
                         // Stocke les informations de l'utilisateur en session
                         $_SESSION['user_id'] = $user['id'];
                         $_SESSION['email'] = $user['email'];
+                        $_SESSION['pseudo'] = $user['pseudo'];
                         $_SESSION['success'] = "Connexion réussie!";
                         
                         // Redirige vers la page d'accueil
@@ -84,7 +85,7 @@ class AuthController {
             if (empty($password)) {
                 $errors[] = "Le mot de passe est requis";
             } elseif (strlen($password) < 6) {
-                $errors[] = "Le mot de passe doit contenir au moins 6 caractères";
+                $errors[] = "Le mot de passe doit contenir au moins 6 caractères*";
             }
 
             if ($password !== $confirmPassword) {

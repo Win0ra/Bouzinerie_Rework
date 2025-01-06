@@ -11,7 +11,7 @@
         <div class="content">
             <div class="answers">
                 <div id="answers-container">
-                    <!-- Answers will be populated by JavaScript -->
+                    <!-- Réponses via JavaScript -->
                 </div>
 
             </div>
@@ -29,7 +29,7 @@
     </div>
 </div>
 
-<!-- NE PAS TOUCHER DE LA LIGNE 24 à 28 -->
+<!-- NE PAS TOUCHER  -->
 <script>
     const questions = <?php echo json_encode($questions); ?>;
 </script>

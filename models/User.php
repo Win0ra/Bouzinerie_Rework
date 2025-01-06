@@ -84,7 +84,7 @@ class User {
             return false;
         }
     }
-    // 
+    
     public function getAll()
     {
         $sql = "SELECT id, email, is_admin, created_at FROM users";
@@ -132,6 +132,21 @@ public function getById($id)
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
+// Récupère le pseudo d'un utilisateur par son ID
+public function getUsernameById($userId) {
+    try {
+        $query = "SELECT pseudo FROM users WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([':id' => $userId]);
+        
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ? $result['pseudo'] : '';
+        
+    } catch (PDOException $e) {
+        error_log("Error getting username: " . $e->getMessage());
+        return '';
+    }
+}
 
     
 }

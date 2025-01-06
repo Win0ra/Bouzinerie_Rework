@@ -26,7 +26,7 @@
 <div class="content">
     <div class="card">
         <div class="card-header">
-            <h1 class="text-center">Connexion</h1> <!-- Titre de la page -->
+            <h1 class="text-center">Connexion</h1> 
         </div>
 
         <!-- Affichage des erreurs s'il y en a -->

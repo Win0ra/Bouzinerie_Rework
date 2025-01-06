@@ -63,6 +63,7 @@
     justify-content: space-evenly;
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
 p.txt-foot-center #foot {
@@ -125,7 +126,7 @@ a:focus {
     padding: 0;
 }
 
-/* Version tablette (768px à 1024px) */
+/* Version tablette */
 @media screen and (max-width: 1024px) {
     .footer {
         height: auto;
@@ -181,7 +182,7 @@ a:focus {
     }
 }
 
-/* Version mobile (max-width: 767px) */
+/* Version mobile  */
 @media screen and (max-width: 767px) {
     .footer {
         padding: 15px 0;
@@ -233,7 +234,7 @@ a:focus {
     margin-bottom: 0;
 }
 
-/* Assurez-vous que le footer est collé au bas */
+/* footer est collé en bas */
 body {
     margin: 0;
     min-height: 100vh;

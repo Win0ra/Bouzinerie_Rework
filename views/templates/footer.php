@@ -9,7 +9,8 @@
     <footer class="footer">
         <div class="foot-left">
             <p class="txt-foot" id="foot"><a href="/public/index.php?page=home">Accueil</a></p>
-            <p class="txt-foot" id="foot"><a href="/public/index.php?page=categories">Jouer</a></p>
+            <p class="txt-foot" id="foot"><a href="/public/index.php?page=register">Inscription</a></p>
+            <p class="txt-foot" id="foot"><a href="/public/index.php?page=login">Connexion</a></p>
             <p class="txt-foot" id="foot"><a href="/public/index.php?page=ranking">Classement</a></p>
         </div>
 
@@ -23,12 +24,6 @@
         </div>
 
         <div class="foot-right">
-            <div class="foot-right-column">
-                <p class="txt-foot" id="foot"><a href="/public/index.php?page=login">Connexion</a></p>
-                <p class="txt-foot" id="foot"><a href="/public/index.php?page=register">Inscription</a></p>
-                <p class="txt-foot" id="foot"><a href="/public/my-account.php">Mon compte</a></p>
-            </div>
-
             <div class="foot-right-column">
                 <p class="txt-foot" id="foot"><a href="/public/index.php?page=contact">Contact</a></p>
                 <p class="txt-foot" id="foot"><a href="/public/index.php?page=gcu">CGU</a></p>

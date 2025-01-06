@@ -1,6 +1,12 @@
 <?php require dirname(__DIR__).'/templates/header.php'; ?>
 
 <link rel="stylesheet" href="/public/css/styles-register.css" type="text/css" media="all">
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+   function onSubmit(token) {
+     document.getElementById("demo-form").submit();
+   }
+ </script>
 
 <div class="content mt-5">
     <div class="card">
@@ -50,11 +56,16 @@
             </form>
             <div class="checkbox">
                 <input type="checkbox" name="checkbox" id="checkbox" required>
-                <p class="cgu">J'accepte les Conditions Générales d'Utilisation et la Politique de Confidentialité.
-                    Je reconnais que mes données seront traitées conformément à cette politique.
+                <p class="cgu">J'accepte les Conditions Générales d'Utilisation et la Politique de Confidentialité.<br/>
+                    Je reconnais que mes données seront traitées conformément à cette politique.<br/>
                     Je comprends que je peux me désinscrire à tout moment.</p>
             </div><br/>
 
+            <div class="g-recaptcha" data-sitekey="6Lf6rK8qAAAAAGypquwa53yxoITA9UD5en6nYXP1"></div>
+            <button class="g-recaptcha" 
+        data-sitekey="6Lf6rK8qAAAAAGypquwa53yxoITA9UD5en6nYXP1" 
+        data-callback='onSubmit' 
+        data-action='submit'>Soumettre</button>
             <div class="mt-3 text-center">
                 <p>Déjà inscrit? 
                 <button type="submit" class="login"><a href="index.php?page=login">Se connecter</a></button></p>   
