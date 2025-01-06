@@ -20,9 +20,9 @@ Conformément au Règlement Général sur la Protection des Données (RGPD) et �
 Le site La Bouzinerie est édité par :<br>
 •	Nom de l'entreprise ou du particulier : [Nom de l'entité légale ou du particulier]<br>
 •	Siège social : [****]<br>
-•	Numéro SIRET : [Numéro SIRET de l'entreprise ou du particulier]<br>
+•	Numéro SIRET : [N/A]<br>
 •	Directeurs de la publication : Maëva B., Hugo C., Hugo R.<br>
-•	Contact : <a href="mailto:contact.bouzinerie@gmail.com" id="mail-gcu">contact@labouzinerie.com</a><br><br>
+•	Contact : <a href="mailto:contact.bouzinerie@gmail.com" id="mail-gcu">contact.bouzinerie@gmail.com</a><br><br>
 2. Hébergeur du site<br><br>
 •	Nom de l’hébergeur : [*****]<br>
 •	Adresse de l’hébergeur : [*****]<br>
@@ -61,7 +61,7 @@ Conformément au RGPD, vous disposez des droits suivants concernant vos données
 •	Droit à la limitation du traitement : Vous pouvez demander que vos données ne soient pas utilisées temporairement ;<br>
 •	Droit à la portabilité des données : Vous pouvez demander à recevoir vos données personnelles dans un format structuré ;<br>
 •	Droit d’opposition : Vous pouvez vous opposer au traitement de vos données à des fins marketing ou sur des bases légales légitimes.<br>
-Pour exercer vos droits, vous pouvez nous contacter à l'adresse : <a href="mailto:contact.bouzinerie@gmail.com" id="mail-gcu">contact@labouzinerie.com</a>. Nous répondrons à votre demande dans un délai d'un mois.<br><br>
+Pour exercer vos droits, vous pouvez nous contacter à l'adresse : <a href="mailto:contact.bouzinerie@gmail.com" id="mail-gcu">contact.bouzinerie@gmail.com</a>. Nous répondrons à votre demande dans un délai d'un mois.<br><br>
 8. Sécurité des données<br><br>
 La Bouzinerie met en œuvre toutes les mesures de sécurité techniques et organisationnelles nécessaires pour protéger vos données personnelles contre les accès non autorisés, les pertes, les destructions ou les altérations.<br><br>
 9. Cookies<br><br>
@@ -74,7 +74,7 @@ Lors de votre première visite sur le site, vous serez informé de l’utilisati
 Nous nous réservons le droit de modifier la présente politique de confidentialité à tout moment. Vous serez informé de tout changement majeur via une notification sur le site ou par e-mail. Nous vous encourageons à consulter régulièrement cette page.<br><br>
 11. Contact<br><br>
 Pour toute question ou demande concernant la protection de vos données personnelles, vous pouvez nous contacter :<br>
-•	Email : <a href="mailto:contact.bouzinerie@gmail.comm" id="mail-gcu">contact@labouzinerie.com</a><br>
+•	Email : <a href="mailto:contact.bouzinerie@gmail.comm" id="mail-gcu">contact.bouzinerie@gmail.com</a><br>
 •	Adresse postale : [****]<br><br>
 
 Ces mentions légales sont conformes à la législation applicable, notamment le Règlement Général sur la Protection des Données (RGPD) et la loi Informatique et Libertés modifiée.<br><br>

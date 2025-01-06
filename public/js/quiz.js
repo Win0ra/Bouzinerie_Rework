@@ -192,7 +192,7 @@ class QuizGame {
         let user_id = $('#user-id').val(); // ID de l'utilisateur
         let quiz_id = $('#quiz-id').val(); // ID du quiz
         saveScore(user_id, totalScore, quiz_id, this.correctAnswersCount); // Sauvegarde le score
-        this.scoreElement.innerHTML = `Total Score: ${totalScore}`; // Affiche le score final
+        this.scoreElement.innerHTML = `Total score: ${totalScore}`; // Affiche le score final
         this.resultModal.style.display = 'block'; // Affiche la modal des résultats
     }
 

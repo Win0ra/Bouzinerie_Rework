@@ -65,7 +65,7 @@ Ces CGU sont régies par le droit français.
 En cas de litige, les parties s’efforceront de trouver une solution amiable.<br>
 À défaut, les tribunaux compétents seront ceux de Lyon.<br><br>
 
-Si vous avez des questions ou des remarques concernant ces CGU, vous pouvez nous contacter à <a href="mailto:contact.bouzinerie@gmail.com" id="mail-gcu">contact.bouzinerie@gmail.com</a>.<br><br>
+Si vous avez des questions ou des remarques concernant ces CGU, vous pouvez nous contacter à <a href="mailto:contact.bouzinerie@gmail.com" id="mail-gcu">contact.bouzinerie@gmail.com</a><br><br>
 
     </p>
 
