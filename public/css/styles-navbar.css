@@ -165,11 +165,12 @@ table {
 
 .Navbar li a {
     display: block;
-    color: #000000 !important;
+    color: #000000;
     text-align: center;
     text-decoration: none;
     font-size: 24px;
 }
+
 
 /* Style commun pour les boutons connexion/déconnexion */
 .Navbar li.auth-link {
@@ -318,4 +319,12 @@ span.connected {
         text-align: center;
     }
 
+}
+.Navbar.admin li a {
+    font-weight: bolder;
+    color: #253154;
+    font-size: 18px;
+}
+.Navbar.admin ul {
+    gap: 20px;
 }

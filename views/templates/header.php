@@ -18,7 +18,7 @@
 </head>
 
 
-<div class="Navbar">
+<div class="Navbar front">
     <div class="logo">
         <a href="index.php?page=home">
             <img src="public/img/logo_bleu.svg" alt="logo_la_bouzinerie">
@@ -26,15 +26,22 @@
     </div>
     <div class="nav-links">
         <ul>
+        <?php if (isset($userModel) && isset($_SESSION['user_id']) && !$userModel->isAdmin($_SESSION['user_id'])): ?>
+
             <li><a href="index.php?page=home">Accueil</a></li>
             <li><a href="index.php?page=ranking">Classement</a></li>
+        <?php endif; ?>
+
+            <?php if ( !isset($_SESSION['user_id']) ): ?>
             <li><a href="index.php?page=register">Inscription</a></li>
+            <?php endif; ?>
+
         </ul>
     </div>
     <div class="auth-links">
         <ul>
             <?php if (isset($_SESSION['user_id'])) : ?>
-                <?php if (isset($userModel) && $userModel->isAdmin($_SESSION['user_id'])): ?>
+                <?php if (isset($userModel) && isset($_SESSION['user_id']) && $userModel->isAdmin($_SESSION['user_id'])): ?>
                     <li><a href="index.php?page=admin">Admin</a></li>
                 <?php endif; ?>
                 <li class="auth-link"><a href="index.php?page=logout">Déconnexion <i class="fa-solid fa-right-from-bracket"></i></a></li>
@@ -45,7 +52,7 @@
     </div>
     <div class="user">
     <span>
-        <?php if (isset($userModel) && isset($_SESSION['user_id']) && $userModel->isAdmin($_SESSION['user_id'])): ?>
+        <?php if (isset($userModel) && isset($_SESSION['user_id'])): ?>
             Vous êtes bien connecté
         <?php endif; ?>
 

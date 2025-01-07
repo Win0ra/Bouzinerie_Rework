@@ -53,6 +53,7 @@ class GameController {
         // Récupère les informations de la catégorie et les questions associées
         $category = $this->categoryModel->getById($categoryId);
         $questions = $this->questionModel->getByCategory($categoryId);
+        shuffle($questions); 
         $userModel = $this->userModel;
 
         // Charge la vue du quiz

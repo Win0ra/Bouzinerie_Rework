@@ -13,14 +13,12 @@
 </head>
 
 <body>
-   <div class="Navbar">
+   <div class="Navbar admin">
       <ul>
          <li><a href="index.php?page=home">Front</a></li>
-         <li><a href="index.php?page=admin">Quiz Admin Panel</a></li>
          <li><a href="index.php?page=admin&action=questions">Gérer les Questions</a></li>
          <li><a href="index.php?page=admin&action=categories">Gérer les catégories</a></li>
          <li><a href="index.php?page=admin&action=users">Gérer les utilisateurs</a></li>
-         <li><a href="#">Mon Compte</a></li>
          <li><a href="index.php?page=logout">Déconnexion</a></li>
 
       </ul>
