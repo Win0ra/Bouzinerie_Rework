@@ -140,7 +140,7 @@ table {
 body {
     background: linear-gradient(0deg, rgba(170, 203, 245, 1) 0%, rgba(238, 255, 254, 1) 20%, rgba(238, 255, 254, 1) 70%, rgba(170, 203, 245, 1) 100%);
     background-repeat: no-repeat;
-    height: 100%;
+    min-height: 100vh;
 }
 
 h1 {
@@ -320,7 +320,7 @@ button.Send {
     text-decoration: none;
 }
 
-/* Responsive Design for Tablets */
+/* TABLETTE */
 @media (max-width: 1024px) {
     .margin {
         width: 90%;
@@ -357,7 +357,7 @@ button.Send {
     }
 }
 
-/* Responsive Design for Mobile */
+/* MOBILE */
 @media (max-width: 768px) {
     .margin {
         width: 90%;

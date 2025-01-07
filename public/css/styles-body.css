@@ -31,6 +31,10 @@ footer, header, hgroup, menu, nav, section {
     display: block;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     line-height: 1;
 }
@@ -105,7 +109,7 @@ a#footer {
     font-size: 19px;
 }
 
-/* SEARCHBAR DEBUT */
+/* SEARCHBAR */
 #SearchBar {
     position: relative;
     display: flex;
@@ -146,24 +150,11 @@ i.fa-solid.fa-magnifying-glass {
     color: #858585;
 }
 
-/* .search-results {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 1rem;
-} */
-
-/* .no-results, .error {
-    text-align: center;
-    width: 100%;
-    padding: 1rem;
-} */
-
 .error {
     color: red;
 }
 
-/* QUIZZ CARDS STYLES */
+/* QUIZ CARDS STYLES */
 .content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -276,7 +267,7 @@ button.ranking {
     color: #9a6748;
 }
 
-/* Version tablette (768px à 1024px) */
+/* TABLETTE */
 @media screen and (max-width: 1024px) {
     .margin {
         width: 90%;
@@ -348,7 +339,7 @@ button.ranking {
     }
 }
 
-/* Version mobile */
+/* MOBILE */
 @media screen and (max-width: 767px) {
     h1 {
         font-size: 32px;
@@ -404,7 +395,7 @@ button.ranking {
         font-size: 16px;
     }
 
-    /* Buttons */
+    /* BUTTONS */
     button.ranking {
         width: 90%;
         font-size: 18px;

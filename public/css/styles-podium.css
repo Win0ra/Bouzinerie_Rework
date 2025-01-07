@@ -84,7 +84,7 @@ p.p-podium {
     margin: 0 auto;
 }
 
-/* Tablette */
+/* TABLETTE */
 @media screen and (max-width: 1024px) {
     .Blocks {
         width: 100%;
@@ -117,7 +117,7 @@ p.p-podium {
     }
 }
 
-/* Mobile */
+/* MOBILE */
 @media screen and (max-width: 768px) {
     .Blocks {
         padding: 0 0px;
@@ -149,30 +149,3 @@ p.p-podium {
     }
 }
 
-/* Petit Mobile */
-@media screen and (max-width: 480px) {
-    #first {
-        font-size: 100px;
-    }
-
-    #second, #third {
-        font-size: 80px;
-    }
-
-    .FirstBlock {
-        height: 160px;
-    }
-
-    .SecondBlock, .ThirdBlock {
-        height: 80px;
-    }
-
-    p.p-podium {
-        font-size: 16px;
-    }
-
-    .h2-podium {
-        font-size: 20px;
-        padding: 15px 0;
-    }
-}

@@ -23,37 +23,46 @@ time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
+
+/* Correction de la hauteur */
+html {
+    height: 100%;
+}
+
 body {
     line-height: 1;
+    min-height: 100vh;
+    background: linear-gradient(0deg, rgba(170, 203, 245, 1) 0%, rgba(238, 255, 254, 1) 20%, rgba(238, 255, 254, 1) 70%, rgba(170, 203, 245, 1) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
+
 ol, ul {
     list-style: none;
 }
+
 blockquote, q {
     quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
     content: '';
     content: none;
 }
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
 }
 
 /* CONTENU DE LA PAGE */
-body {
-    background: linear-gradient(0deg, rgba(170, 203, 245, 1) 0%, rgba(238, 255, 254, 1) 20%, rgba(238, 255, 254, 1) 70%, rgba(170, 203, 245, 1) 100%);
-    background-repeat: no-repeat;
-    height: 100%;
-}
-
 h1 {
     font-family: Lobster Two;
     font-size: 36px;
@@ -86,6 +95,7 @@ p {
     margin: 0px auto;
     width: 1040px;
 }
+
 .left {
     font-family: Lobster Two;
     font-size: 25px;
@@ -97,7 +107,7 @@ input {
     font-size: 20px;
 }
 
-#pseudo,#email, #password, #confirm_password {
+#pseudo, #email, #password, #confirm_password {
     border-radius: 30px;
     border: none;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -117,7 +127,7 @@ input {
     line-height: 40px;
 }
 
-.center-placeholder::placeholder{
+.center-placeholder::placeholder {
     height: 13px;
 }
 
@@ -127,6 +137,13 @@ input {
     width: 100%;
     justify-content: space-between;
     margin: 0 0 24px 0;
+}
+
+label {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: 'Lobster Two';
+    font-size: 20px;
 }
 
 /* FIN DU FORMULAIRE */
@@ -156,17 +173,17 @@ input {
 input#checkbox {
     height: 22px;
     width: 22px;
-}    
+}
 
 .checkbox {
     width: 1040px;
     margin: 32px 0px 40px 0px;
     display: flex;
-}    
+}
 
-.cgu{
+.cgu {
     padding: 0 0 0 8px;
-}    
+}
 
 .checkbox {
     width: 100%;
@@ -192,9 +209,11 @@ button.login {
     margin: 34px 0 96px 0;
     cursor: pointer;
 }
+
 button.login a {
     text-decoration: none;
 }
+
 button.login:hover a {
     color: white;
 }
@@ -237,7 +256,7 @@ button.login a:active {
 
     h1 {
         font-size: 36px;
-        text-align:center;
+        text-align: center;
     }
 
     h3 {

@@ -1,16 +1,16 @@
 <?php require dirname(__DIR__) . '/templates/header.php'; // Inclusion de l'en-tête ?>
 
-<!-- Lien vers la feuille de style spécifique pour la page de connexion -->
+<link rel="stylesheet" href="public/css/styles-register.css" type="text/css" media="all">
 
-<div class="container">
-        <h2>Reset Password</h2>
+<div class="content">
+        <h1>Réinitialisation de mot de passe</h1><br/>
         <form action="/index.php?page=update-password" method="POST">
             <input type="hidden" name="token" value="<?php echo $_GET['token']; ?>">
-            <label for="password">New Password:</label>
+            <label for="password">Nouveau mot de passe :</label><br/>
             <input type="password" id="password" name="password" required>
-            <label for="confirm_password">Confirm Password:</label>
+            <label for="confirm_password">Confirmez le nouveau mot de passe :</label><br/>
             <input type="password" id="confirm_password" name="confirm_password" required>
-            <button type="submit">Reset Password</button>
+            <button type="submit">Réinitialisation</button>
         </form>
     </div>
-<?php require dirname(__DIR__) . '/templates/footer.php'; // Inclusion du pied de page ?>
+

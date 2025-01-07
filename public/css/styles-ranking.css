@@ -111,7 +111,7 @@ body {
     line-height: 1;
     background: linear-gradient(0deg, rgba(170, 203, 245, 1) 0%, rgba(238, 255, 254, 1) 20%, rgba(238, 255, 254, 1) 70%, rgba(170, 203, 245, 1) 100%);
     background-repeat: no-repeat;
-    height: 100%;
+    min-height: 100vh;
 }
 
 ol,
@@ -176,7 +176,7 @@ p {
     margin: 0px auto;
 }
 
-/****************** SEARCH BAR ***************/
+/* SEARCH BAR */
 #SearchBar {
     position: relative;
     display: flex;
@@ -216,7 +216,7 @@ i.fa-solid.fa-magnifying-glass {
     color: #858585;
 }
 
-/****************** CLASSEMENT ***************/
+/* RANKING */
 .Ranking-List {
     display: flex;
     flex-direction: row;
@@ -281,8 +281,7 @@ li.Score {
     font-weight: bold;
 }
 
-/****************** RESPONSIVE ***************/
-/* Version tablette */
+/* TABLETTE */
 @media screen and (max-width: 1024px) {
     .margin {
         width: 90%;
@@ -350,7 +349,7 @@ li.Score {
     }
 }
 
-/* Version mobile */
+/* MOBILE */
 @media screen and (max-width: 767px) {
     .margin {
         width: 95%;

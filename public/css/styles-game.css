@@ -152,7 +152,7 @@ button:hover {
     background: linear-gradient(#3565BC, #114198);
 }
 
-/* RESPONSIVE TABLETTE */
+/* TABLETTE */
 @media screen and (max-width: 1024px) {
     .container {
         max-width: 90%;
@@ -194,7 +194,7 @@ button:hover {
     }
 }
 
-/* RESPONSIVE MOBILE */
+/* MOBILE */
 @media screen and (max-width: 768px) {
     .container {
         padding: 10px;

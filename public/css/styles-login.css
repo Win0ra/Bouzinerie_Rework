@@ -52,7 +52,7 @@ table {
 body {
     background: linear-gradient(0deg, rgba(170, 203, 245, 1) 0%, rgba(238, 255, 254, 1) 20%, rgba(238, 255, 254, 1) 70%, rgba(170, 203, 245, 1) 100%);
     background-repeat: no-repeat;
-    height: 100%;
+    min-height: 100vh;
 }
 
 h1 {
@@ -238,7 +238,14 @@ p.memorize {
     height: 48px;
 }
 
-/* Tablette */
+label {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: 'Lobster Two';
+    font-size: 20px;
+}
+
+/* TABLETTE */
 @media (max-width: 768px) {
     .content {
         width: 90%;
@@ -262,7 +269,7 @@ p.memorize {
     }
 }
 
-/* Mobile */
+/* MOBILE */
 @media (max-width: 480px) {
     .content {
         width: 95%;
