@@ -27,15 +27,12 @@
     <div class="nav-links">
         <ul>
         <?php if (isset($userModel) && isset($_SESSION['user_id']) && !$userModel->isAdmin($_SESSION['user_id'])): ?>
-
-            <li><a href="index.php?page=home">Accueil</a></li>
-            <li><a href="index.php?page=ranking">Classement</a></li>
+            <li><a href="index.php?page=home">Accueil</a></li>      
         <?php endif; ?>
-
-            <?php if ( !isset($_SESSION['user_id']) ): ?>
+        <li><a href="index.php?page=ranking">Classement</a></li>
+        <?php  if ( !isset($_SESSION['user_id']) ): ?>
             <li><a href="index.php?page=register">Inscription</a></li>
             <?php endif; ?>
-
         </ul>
     </div>
     <div class="auth-links">

@@ -8,7 +8,7 @@
     }
 </script>
 
-<div class="content mt-5">
+<div class="content">
     <div class="card">
         <div class="card-header">
             <h1 class="text-center">Inscription</h1>
