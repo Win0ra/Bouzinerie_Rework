@@ -153,6 +153,28 @@ input {
     align-items: center;
 }
 
+input#checkbox {
+    height: 22px;
+    width: 22px;
+}    
+
+.checkbox {
+    width: 1040px;
+    margin: 32px 0px 40px 0px;
+    display: flex;
+}    
+
+.cgu{
+    padding: 0 0 0 8px;
+}    
+
+.checkbox {
+    width: 100%;
+    margin: 0px 0px 40px 0px;
+    display: flex;
+    align-items: center;
+}
+
 button.login {
     width: 365px;
     color: white;
@@ -183,7 +205,7 @@ button.login a:active {
     color: white;
 }
 
-/* Media Queries for Tablet */
+/* TABLETTE */
 @media (max-width: 768px) {
     .content {
         width: 90%;
@@ -206,7 +228,7 @@ button.login a:active {
     }
 }
 
-/* Media Queries for Mobile */
+/* MOBILE */
 @media (max-width: 480px) {
     .content {
         width: 95%;
@@ -243,5 +265,12 @@ button.login a:active {
 
     .no-compte {
         margin: 30px 0px 0px 0px;
+    }
+
+    .checkbox {
+        width: 100%;
+        margin: 0px 0px 40px 0px;
+        display: flex;
+        align-items: center;
     }
 }

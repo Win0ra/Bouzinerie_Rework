@@ -1,5 +1,21 @@
 <?php require dirname(__DIR__). '/templates/header.php'; ?>
+<?php
 
+header("Content-Security-Policy: ".
+    "default-src 'self'; ".
+    "script-src 'self' https://kit.fontawesome.com https://cdnjs.cloudflare.com 'unsafe-inline'; ".
+    "style-src 'self' 'unsafe-inline'; ".
+    "img-src 'self' data:; ".
+    "font-src 'self' https://kit.fontawesome.com https://*.fontawesome.com; ".
+    "connect-src 'self' https://*.fontawesome.com; ".
+    "form-action 'self'; ".
+    "frame-ancestors 'none'; ".
+    "base-uri 'self';"
+);
+header("X-Content-Type-Options: nosniff");
+header("X-Frame-Options: DENY");
+header("Referrer-Policy: strict-origin-when-cross-origin");
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,18 +29,18 @@
     <h1>Mentions Légales et Politique de Confidentialité<br><br>
     "La Bouzinerie"</h1>
 <p>
-Date de mise à jour : 21/10/2024<br><br>
+Date de mise à jour : 07/01/2025<br><br>
 Conformément au Règlement Général sur la Protection des Données (RGPD) et à la législation française, La Bouzinerie s'engage à protéger les données personnelles de ses utilisateurs.<br> Cette page présente les mentions légales et la politique de confidentialité appliquées sur notre site.<br><br>
 
 1. Éditeur du site<br><br>
 Le site La Bouzinerie est édité par :<br>
-•	Nom de l'entreprise ou du particulier : [Nom de l'entité légale ou du particulier]<br>
-•	Siège social : [****]<br>
+•	Nom de l'entreprise ou du particulier : Maëva B., Hugo C, Hugo R.<br>
+•	Siège social : LYON<br>
 •	Numéro SIRET : [N/A]<br>
 •	Directeurs de la publication : Maëva B., Hugo C., Hugo R.<br>
 •	Contact : <a href="mailto:contact.bouzinerie@gmail.com" id="mail-gcu">contact.bouzinerie@gmail.com</a><br><br>
 2. Hébergeur du site<br><br>
-•	Nom de l’hébergeur : [*****]<br>
+•	Nom de l’hébergeur : [PLANETHOSTER]<br>
 •	Adresse de l’hébergeur : [*****]<br>
 •	Contact : [*****]<br><br>
 
