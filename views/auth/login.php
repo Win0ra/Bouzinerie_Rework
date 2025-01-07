@@ -22,6 +22,10 @@
             .catch(error => console.error('Erreur :', error)); // Gère les erreurs
     }
 </script>
+<?php if (isset($_GET['reset']) && $_GET['reset'] == '1') : ?>
+
+<div id="notification"> your password has been reset successfully you can login with you new password</div>
+<?php endif; ?>
 
 <div class="content">
     <div class="card">
@@ -68,7 +72,7 @@
                 <!-- Option pour se souvenir de l'utilisateur -->
                 <input type="checkbox" name="checkbox" id="checkbox" <?php echo isset($_COOKIE['remember_me']) ? 'checked' : ''; ?>>
                 <p class="souvenir"> Se souvenir de moi...</p><br />
-                <p class="mdp-oublie"><a href="#">Mot de passe oublié ?</a></p> <!-- Lien pour récupérer le mot de passe -->
+                <p class="mdp-oublie"><a href="/index.php?page=reset-password-request">Mot de passe oublié ?</a></p> <!-- Lien pour récupérer le mot de passe -->
             </div>
 
             <!-- Bouton pour soumettre le formulaire -->

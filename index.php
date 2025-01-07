@@ -173,6 +173,31 @@ switch ($page) {
                 break;
         }
         break;
+    case 'reset-password':
+            require_once 'controllers/AuthController.php';
+            $controller = new AuthController();
+            $controller->showChangePasswordPage(); 
+            break;
+    case 'send-reset-link':
+        require_once 'controllers/AuthController.php';
+        $controller = new AuthController();
+        $controller->sendResetLink(); 
+        break;
 
-    // Nouveau case pour un point d'API (ajout futur)
+    // Authentification : Réinitialisation du mot de passe
+    case 'update-password':
+        require_once 'controllers/AuthController.php';
+        $controller = new AuthController();
+        $controller->updatePassword(); 
+        break;
+    case 'reset-password-request':
+        require_once 'controllers/AuthController.php';
+        $controller = new AuthController();
+        $controller->showResetPage(); 
+        break;
+
+    
+        
+
+
 }

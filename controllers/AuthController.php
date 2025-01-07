@@ -1,14 +1,72 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php'; // Include Composer autoload
+
 require_once dirname(__DIR__). '/models/User.php';
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 class AuthController {
-    // Modèle User utilisé pour les opérations liées aux utilisateurs
     private $userModel;
 
     public function __construct() {
         // Initialisation du modèle User
         $this->userModel = new User();
     }
+    public function sendResetLink() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $email = $_POST['email'];
+            // Here you would typically check if the email exists in the database
+            // Encrypt the email to create a token
+            $token = base64_encode($email); // Encrypt the email
+            // Save token to the database associated with the email
+
+            // Send email
+            $mail = new PHPMailer(true);
+            try {
+                // Server settings
+                $mail->isSMTP();
+                $mail->Host = 'smtp-relay.brevo.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = '81a202001@smtp-brevo.com';
+                $mail->Password = 'bZwK7QSAcDJ5WCvj';
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                $mail->Port = 587;
+
+                // Recipients
+                $mail->setFrom('a.eightid@gmail.com', 'eight');
+                $mail->addAddress($email);
+
+                // Content
+                $mail->isHTML(true);
+                $mail->Subject = 'Password Reset Request';
+                $mail->Body    = 'Click <a href="http://quiz.local/index.php?page=reset-password&token=' . $token . '">here</a> to reset your password.';
+
+                $mail->send();
+                echo 'Reset link has been sent to your email.';
+            } catch (Exception $e) {
+                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            }
+        }
+    }
+    public function updatePassword() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $token = $_POST['token'];
+            $newPassword = $_POST['password'];
+            $confirmPassword = $_POST['confirm_password'];
+            // Validate the token and retrieve the associated email
+            $email = base64_decode($token); 
+            if ($email && $newPassword === $confirmPassword) {
+                if($this->userModel->updatePassword($email,$newPassword)) {
+                    header('Location: index.php?page=login&reset=1');
+                }
+            } else {
+
+                echo 'Passwords do not match.';
+            }
+        }
+    }
+
 
     // Gère le processus de connexion des utilisateurs
     public function login() {
@@ -111,7 +169,7 @@ class AuthController {
             if (empty($errors)) {
                 try {
                     // Hachage sécurisé du mot de passe
-                    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
                     // Création de l'utilisateur via le modèle User
                     if ($this->userModel->create($email, $hashedPassword, $pseudo)) {
@@ -142,5 +200,14 @@ class AuthController {
         // Redirige vers la page de connexion
         header('Location: index.php?page=login');
         exit;
+    }
+    public  function showResetPage()
+    {
+        require dirname(__DIR__).'/views/auth/reset_password_request.php';
+    }
+    public function showChangePasswordPage()
+    {
+        require dirname(__DIR__).'/views/auth/reset_password.php';
+
     }
 }
