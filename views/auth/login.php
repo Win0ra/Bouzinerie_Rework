@@ -56,17 +56,17 @@
                 <!-- Champ pour l'adresse email -->
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email"
-                    value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>"
+                    value="<?php echo isset($_COOKIE['remember_me']) ? htmlspecialchars($_COOKIE['remember_me']) : (isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''); ?>"
                     required>
             </div>
             <div class="left">
                 <!-- Champ pour le mot de passe -->
                 <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" required value="<?php echo isset($_COOKIE['remember_password']) ? htmlspecialchars($_COOKIE['remember_password']) : ''; ?>">
             </div>
             <div class="checkbox">
                 <!-- Option pour se souvenir de l'utilisateur -->
-                <input type="checkbox" name="checkbox" id="checkbox">
+                <input type="checkbox" name="checkbox" id="checkbox" <?php echo isset($_COOKIE['remember_me']) ? 'checked' : ''; ?>>
                 <p class="souvenir"> Se souvenir de moi...</p><br />
                 <p class="mdp-oublie"><a href="#">Mot de passe oublié ?</a></p> <!-- Lien pour récupérer le mot de passe -->
             </div>

@@ -37,11 +37,20 @@ class AuthController {
                 try {
                     // Vérifie les identifiants via le modèle User
                     if ($user = $this->userModel->verify($email, $password)) {
-                        // Stocke les informations de l'utilisateur en session
                         $_SESSION['user_id'] = $user['id'];
                         $_SESSION['email'] = $user['email'];
                         $_SESSION['pseudo'] = $user['pseudo'];
                         $_SESSION['success'] = "Connexion réussie!";
+
+                        if (isset($_POST['checkbox'])) {
+                            // Définit un cookie pour se souvenir de l'utilisateur pendant 30 jours
+                            setcookie('remember_me', $user['email'], time() + (30 * 24 * 60 * 60), "/"); // 30 jours
+                            // Définit un cookie pour le mot de passe pendant 30 jours
+                            setcookie('remember_password', $password, time() + (30 * 24 * 60 * 60), "/"); // 30 jours
+                        } else {
+                            // Si non coché, supprime le cookie de mot de passe
+                            setcookie('remember_password', '', time() - 3600, "/"); // Supprime le cookie
+}
                         
                         // Redirige vers la page d'accueil
                         header('Location: index.php?page=home');
