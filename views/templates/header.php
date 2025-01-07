@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/styles-navbar.css" type="text/css" media="all"> 
+    <link rel="stylesheet" href="public/css/styles-navbar.css" type="text/css" media="all"> 
     <?php if (isset($_GET["page"] ) && $_GET["page"] == "quiz")  : ?> 
-    <link rel="stylesheet" href="/css/styles-game.css" type="text/css" media="all">
+    <link rel="stylesheet" href="public/css/styles-game.css" type="text/css" media="all">
     <?php endif; ?>
     <?php if (isset($_GET["page"] ) && $_GET["page"] == "contact")  : ?> 
-    <link rel="stylesheet" href="/css/styles-contact.css" type="text/css" media="all">
+    <link rel="stylesheet" href="public/css/styles-contact.css" type="text/css" media="all">
     <?php endif; ?>
     <script src="https://kit.fontawesome.com/e98829b701.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -43,11 +43,11 @@
                 </li>
             <?php endif; ?>
         </ul>
-        <div class="logo"><a href="index.php?page=home"><img src="/img/logo_bleu.svg" alt="logo_la_bouzinerie">
+        <div class="logo"><a href="index.php?page=home"><img src="public/img/logo_bleu.svg" alt="logo_la_bouzinerie">
         </a></div>
     </div>
     <span>
-    <?php if (isset($userModel) && $userModel->isAdmin($_SESSION['user_id'])): ?>
+    <?php if (isset($userModel) && isset($_SESSION['user_id']) && $userModel->isAdmin($_SESSION['user_id'])): ?>
     Vous êtes bien connecté 
     <?php endif; ?>
 

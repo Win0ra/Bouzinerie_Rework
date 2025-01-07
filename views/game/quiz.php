@@ -33,4 +33,4 @@
 <script>
     const questions = <?php echo json_encode($questions); ?>;
 </script>
-<script src="<?php dirname(__DIR__) ?>/js/quiz.js"></script>
+<script src="<?php dirname(__DIR__) ?>/public/js/quiz.js"></script>

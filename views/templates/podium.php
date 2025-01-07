@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/styles-podium.css" type="text/css" media="all">
+<link rel="stylesheet" href="public/css/styles-podium.css" type="text/css" media="all">
 <!-- Podium -->
 <div class="margin">
 <div class="Blocks">

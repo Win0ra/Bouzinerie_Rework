@@ -13,44 +13,44 @@ $page = $_GET['page'] ?? 'home'; // Récupère la page demandée via le paramèt
 switch ($page) {
     // Authentification : Connexion
     case 'login':
-        require_once dirname(__DIR__) . '/controllers/AuthController.php';
+        require_once 'controllers/AuthController.php';
         $controller = new AuthController();
         $controller->login(); // Appelle la méthode de connexion
         break;
 
     // Authentification : Inscription
     case 'register':
-        require_once dirname(__DIR__) . '/controllers/AuthController.php';
+        require_once 'controllers/AuthController.php';
         $controller = new AuthController();
         $controller->register(); // Appelle la méthode d'inscription
         break;
 
     // Authentification : Déconnexion
     case 'logout':
-        require_once dirname(__DIR__) . '/controllers/AuthController.php';
+        require_once 'controllers/AuthController.php';
         $controller = new AuthController();
         $controller->logout(); // Appelle la méthode de déconnexion
         break;
 
     // Catégories de quiz
     case 'categories':
-        require_once dirname(__DIR__) . '/controllers/GameController.php';
+        require_once 'controllers/GameController.php';
         $controller = new GameController();
         $controller->categories(); // Affiche les catégories
         break;
 
     // Lancement d'un quiz
     case 'quiz':
-        require_once dirname(__DIR__) . '/controllers/GameController.php';
+        require_once 'controllers/GameController.php';
         $controller = new GameController();
         $controller->quiz(); // Lance le quiz
         break;
 
     // Recherche dans les quiz
     case 'search':
-        require_once dirname(__DIR__) . '/controllers/SearchController.php';
-        require_once dirname(__DIR__) . '/models/QuizModel.php';
-        require_once dirname(__DIR__) . '/config/Database.php';
+        require_once 'controllers/SearchController.php';
+        require_once 'models/QuizModel.php';
+        require_once 'config/Database.php';
 
         // Initialise la connexion à la base de données
         $database = new Database();
@@ -62,8 +62,8 @@ switch ($page) {
 
     // Classement des joueurs
     case 'ranking':
-        require_once dirname(__DIR__) . '/controllers/RankingController.php';
-        require_once dirname(__DIR__) . '/config/Database.php';
+        require_once 'controllers/RankingController.php';
+        require_once 'config/Database.php';
 
         try {
             $database = new Database();
@@ -78,9 +78,9 @@ switch ($page) {
 
     // Page d'accueil
     case 'home':
-        require_once dirname(__DIR__) . '/controllers/HomeController.php';
-        require_once dirname(__DIR__) . '/config/Database.php';
-        require_once dirname(__DIR__) . '/models/User.php';
+        require_once 'controllers/HomeController.php';
+        require_once 'config/Database.php';
+        require_once 'models/User.php';
 
         try {
             $database = new Database();
@@ -96,36 +96,36 @@ switch ($page) {
 
     // Page de contact
     case 'contact':
-        require_once dirname(__DIR__) . '/controllers/TemplateController.php';
+        require_once 'controllers/TemplateController.php';
         $controller = new TemplateController();
         $controller->contact(); // Affiche la page de contact
         break;
 
     // Conditions Générales d'Utilisation (CGU)
     case 'gcu':
-        require_once dirname(__DIR__) . '/controllers/TemplateController.php';
+        require_once 'controllers/TemplateController.php';
         $controller = new TemplateController();
         $controller->cgu(); // Affiche les CGU
         break;
 
     // Mentions légales
     case 'legal-notices':
-        require_once dirname(__DIR__) . '/controllers/TemplateController.php';
+        require_once 'controllers/TemplateController.php';
         $controller = new TemplateController();
         $controller->legalNotices(); // Affiche les mentions légales
         break;
 
     // Footer
     case 'footer':
-        require_once dirname(__DIR__) . '/controllers/TemplateController.php';
+        require_once 'controllers/TemplateController.php';
         $controller = new TemplateController();
         $footerLinks = $controller->footer(); // Gère les liens du footer
         break;
 
     // Sauvegarde des scores
     case 'saveScore':
-        require_once dirname(__DIR__) . '/controllers/RankingController.php';
-        require_once dirname(__DIR__) . '/config/Database.php';
+        require_once 'controllers/RankingController.php';
+        require_once 'config/Database.php';
 
         try {
             $database = new Database();
@@ -140,7 +140,7 @@ switch ($page) {
 
     // Administration
     case 'admin':
-        require_once dirname(__DIR__) . '/controllers/admin/AdminController.php';
+        require_once 'controllers/admin/AdminController.php';
         $controller = new AdminController();
         $action = $_GET['action'] ?? 'dashboard'; // Récupère l'action ou utilise 'dashboard' par défaut
 

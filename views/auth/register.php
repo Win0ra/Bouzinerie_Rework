@@ -1,6 +1,6 @@
 <?php require dirname(__DIR__).'/templates/header.php'; ?>
 
-<link rel="stylesheet" href="/css/styles-register.css" type="text/css" media="all">
+<link rel="stylesheet" href="public/css/styles-register.css" type="text/css" media="all">
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
     function onSubmit(token) {

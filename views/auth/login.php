@@ -1,7 +1,7 @@
 <?php require dirname(__DIR__) . '/templates/header.php'; // Inclusion de l'en-tête ?>
 
 <!-- Lien vers la feuille de style spécifique pour la page de connexion -->
-<link rel="stylesheet" href="/css/styles-login.css" type="text/css" media="all">
+<link rel="stylesheet" href="public/css/styles-login.css" type="text/css" media="all">
 
 <!-- Script Google Sign-In pour gérer l'authentification via Google -->
 <script src="https://accounts.google.com/gsi/client" async defer></script>
