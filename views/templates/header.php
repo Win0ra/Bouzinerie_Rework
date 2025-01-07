@@ -18,48 +18,51 @@
 </head>
 
 
-    <div class="Navbar">
+<div class="Navbar">
+    <div class="logo">
+        <a href="index.php?page=home">
+            <img src="public/img/logo_bleu.svg" alt="logo_la_bouzinerie">
+        </a>
+    </div>
+    <div class="nav-links">
         <ul>
             <li><a href="index.php?page=home">Accueil</a></li>
+            <li><a href="index.php?page=ranking">Classement</a></li>
+            <li><a href="index.php?page=login">Inscription</a></li>
+        </ul>
+    </div>
+    <div class="auth-links">
+        <ul>
             <?php if (isset($_SESSION['user_id'])) : ?>
-
-                <li class="li-chevron">
-                    <a href="index.php?page=ranking" class="a-ranking" id="ranking">Classement</a>
-
-                </li>
                 <?php if (isset($userModel) && $userModel->isAdmin($_SESSION['user_id'])): ?>
-                    <li><a href="index.php?page=admin">Panneau Admin</a></li>
-
+                    <li><a href="index.php?page=admin">Admin</a></li>
                 <?php endif; ?>
-
-                <li><a href="index.php?page=logout">Déconnexion</a></li>
-
+                <li class="auth-link"><a href="index.php?page=logout">Déconnexion <i class="fa-solid fa-right-from-bracket"></i></a></li>
             <?php else : ?>
-                <li><a href="index.php?page=login">Connexion</a></li>
-                <li><a href="index.php?page=register">Inscription</a></li>
-                <li>
-                    <a href="index.php?page=ranking" class="a-ranking" id="ranking">Classement</a>
-
-                </li>
+                <li class="auth-link"><a href="index.php?page=login">Connexion <i class="fa-solid fa-right-to-bracket"></i></a></li>
             <?php endif; ?>
         </ul>
-        <div class="logo"><a href="index.php?page=home"><img src="public/img/logo_bleu.svg" alt="logo_la_bouzinerie">
-        </a></div>
     </div>
+    <div class="user">
     <span>
-    <?php if (isset($userModel) && isset($_SESSION['user_id']) && $userModel->isAdmin($_SESSION['user_id'])): ?>
-    Vous êtes bien connecté 
-    <?php endif; ?>
+        <?php if (isset($userModel) && isset($_SESSION['user_id']) && $userModel->isAdmin($_SESSION['user_id'])): ?>
+            Vous êtes bien connecté
+        <?php endif; ?>
 
-    <?php 
+        <?php
         if (isset($_SESSION['user_id']) && isset($userModel)) {
             echo htmlspecialchars($userModel->getUsernameById($_SESSION['user_id']), ENT_QUOTES, 'UTF-8');
         } else {
             echo '';
         }
-    ?>
-</span>
-    
-    </div>
+        ?>
+    </span>
+</div>
+</div>
+
+
+
+
+
 
 

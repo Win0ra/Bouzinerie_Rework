@@ -148,23 +148,22 @@ table {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-family: "Bellota", system-ui;
     padding: 0px 69px 0px 69px;
-    justify-content: flex-start;
+    justify-content: space-between;
     box-sizing: border-box;
 }
 
-ul {
+.Navbar ul {
     list-style-type: none;
     overflow: hidden;
-    width: 80%;
     display: flex;
-    justify-content: space-between;
+    gap: 80px;
 }
 
-li {
+.Navbar li {
     display: inline-block;
 }
 
-li a {
+.Navbar li a {
     display: block;
     color: #000000 !important;
     text-align: center;
@@ -172,9 +171,10 @@ li a {
     font-size: 24px;
 }
 
-
-li {
-    position: relative;
+/* Style commun pour les boutons connexion/déconnexion */
+.Navbar li.auth-link {
+    padding-left: 20px;
+    border-left: 2px solid #114198;
 }
 
 .logo {
@@ -182,7 +182,12 @@ li {
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
+    padding-right: 260px
+}
+
+.logo img {
+    height: 50px;
 }
 
 i.fa-brands.fa-html5 {
@@ -190,22 +195,38 @@ i.fa-brands.fa-html5 {
     color: black;
 }
 
-.logo img {
-    height: 50px;
-}
-
 span.connected {
-    margin: 0px 313.5px;
-    display: block;
-    font-family: 'Bellota';
-    text-align: right;
-    font-size: 18px;
-    font-style: italic;
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    transform: translateY(10px); 
+    font-size: 14px;
     color: #114198;
-    font-weight: 600;
+    text-align: left;
 }
 
-/* Version tablette (768px à 1024px) */
+.user {
+    position: absolute;
+    top: 60px;
+    right: 100px;
+    font-size: 14px;
+    text-align: right;
+}
+
+/* Centrer les éléments "Accueil" et "Classement" pour les utilisateurs non-admin */
+.Navbar .nav-links {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.Navbar .auth-links {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+/* TABLETTE */
 @media screen and (max-width: 1024px) {
     .Navbar {
         width: 90%;
@@ -214,14 +235,21 @@ span.connected {
         margin: 30px auto 50px auto;
     }
 
-    li a {
+    .Navbar ul {
+        gap: 50px;
+    }
+
+    .Navbar li a {
         font-size: 20px;
     }
 
-    .logo img {
-        height: 40px;
+    .Navbar li.auth-link {
+        padding-left: 30px;
     }
 
+    .logo  {
+        display: none;
+    }
 
     i.fa-brands.fa-html5 {
         font-size: 25px;
@@ -233,7 +261,7 @@ span.connected {
     }
 }
 
-/* Version mobile (max-width: 767px) */
+/* MOBILE */
 @media screen and (max-width: 767px) {
     .Navbar {
         width: 95%;
@@ -242,21 +270,43 @@ span.connected {
         margin: 20px auto 40px auto;
     }
 
-    ul {
+    .Navbar ul {
         width: 100%;
+        gap: 20px;
         justify-content: space-around;
     }
 
-    li a {
+    .Navbar li.auth-link {
+        margin-left: 0;
+        padding-left: 10px;
+        border-left: 1px solid #114198;
+    }
+
+    .Navbar .nav-links {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding-right: 10px;
+    }
+
+    .Navbar li a {
         font-size: 16px;
     }
 
     .logo {
-        display: none; /* Cache le logo sur mobile pour gagner de l'espace */
+        display: none;
     }
 
     span.connected {
         margin: 0 100px;
         font-size: 14px;
     }
+    .user {
+        position: relative; 
+        top: 0;
+        right: 0;
+        margin-top: 10px; 
+        font-size: 12px; 
+        text-align: center;
+}
 }

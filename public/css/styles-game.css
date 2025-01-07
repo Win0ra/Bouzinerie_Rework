@@ -108,15 +108,17 @@ body {
     font-family: 'Bellota', sans-serif;
 }
 
-/* FOOTER STYLES */
+/* FOOTER */
 .footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 20px;
     background: transparent;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-family: 'Bellota';
+    font-size: 30px;
 }
 
 #score, #timer {
@@ -132,7 +134,7 @@ body {
     left: 380px;
 }
 
-/* BUTTON STYLES */
+/* BUTTON */
 button {
     background: linear-gradient(#EDC267, #9a6748);
     color: #ffffff;
@@ -234,7 +236,6 @@ button:hover {
     }
 
     .footer {
-        flex-direction: column;
         gap: 15px;
         padding: 15px;
     }
