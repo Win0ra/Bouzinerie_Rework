@@ -28,7 +28,7 @@
         <ul>
             <li><a href="index.php?page=home">Accueil</a></li>
             <li><a href="index.php?page=ranking">Classement</a></li>
-            <li><a href="index.php?page=login">Inscription</a></li>
+            <li><a href="index.php?page=register">Inscription</a></li>
         </ul>
     </div>
     <div class="auth-links">

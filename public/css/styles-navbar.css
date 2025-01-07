@@ -236,7 +236,7 @@ span.connected {
     }
 
     .Navbar ul {
-        gap: 50px;
+        gap: 40px;
     }
 
     .Navbar li a {
@@ -258,6 +258,14 @@ span.connected {
     span.connected {
         margin: 0 200px;
         font-size: 16px;
+    }
+
+    .user {
+        position: absolute;
+        top: 60px;
+        right: 40px;
+        font-size: 11px;
+        text-align: right;
     }
 }
 
@@ -290,7 +298,7 @@ span.connected {
     }
 
     .Navbar li a {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .logo {
@@ -302,11 +310,12 @@ span.connected {
         font-size: 14px;
     }
     .user {
-        position: relative; 
-        top: 0;
-        right: 0;
-        margin-top: 10px; 
-        font-size: 12px; 
+        position: relative;
+        /* top: 0; */
+        right: 54px;
+        margin-top: 30px;
+        font-size: 12px;
         text-align: center;
-}
+    }
+
 }
