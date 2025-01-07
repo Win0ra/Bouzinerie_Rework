@@ -8,7 +8,7 @@ class TemplateController {
 
     // Constructeur : initialise les propriétés
     public function __construct() {
-        $this->basePath = '/public/';              // Définit le chemin de base pour les URLs publiques
+        $this->basePath = '';              // Définit le chemin de base pour les URLs publiques
         $this->userModel = new User();             // Instancie le modèle User
     }
 
@@ -30,7 +30,8 @@ class TemplateController {
     // Méthode pour afficher la page de contact
     public function contact() {
         $pageTitle = "Contact - La Bouzinerie"; // Titre de la page de contact
-        
+        $userModel = $this->userModel;
+
         // Inclut la vue associée à la page de contact
         require dirname(__DIR__) . '/views/templates/contact.php';
     }
@@ -38,7 +39,8 @@ class TemplateController {
     // Méthode pour afficher les Conditions Générales d'Utilisation (CGU)
     public function cgu() {
         $pageTitle = "Conditions Générales d'Utilisation - La Bouzinerie"; // Titre de la page des CGU
-        
+        $userModel = $this->userModel;
+
         // Inclut la vue associée aux CGU
         require dirname(__DIR__) . '/views/templates/gcu.php';
     }
@@ -46,7 +48,8 @@ class TemplateController {
     // Méthode pour afficher la page des mentions légales
     public function legalNotices() {
         $pageTitle = "Mentions Légales - La Bouzinerie"; // Titre de la page des mentions légales
-        
+        $userModel = $this->userModel;
+
         // Inclut la vue associée aux mentions légales
         require dirname(__DIR__) . '/views/templates/legal-notices.php';
     }

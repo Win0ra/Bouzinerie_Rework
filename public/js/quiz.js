@@ -110,7 +110,8 @@ class QuizGame {
     startTimer() {
         let timeLeft = this.timeLimit;
         this.timerElement.textContent = timeLeft;
-
+        $('#current-question').text(this.currentQuestionIndex + 1)
+        $('#total-question').text(this.totalQuestions)
         this.timer = setInterval(() => {
             timeLeft--;
             this.timerElement.textContent = timeLeft;
@@ -175,6 +176,7 @@ class QuizGame {
             this.showQuestion(questions[this.currentQuestionIndex]); // Affiche la question suivante
             this.startTimer(); // Redémarre le timer
             this.updateProgress(); // Met à jour la progression
+            console.log(`Question ${this.currentQuestionIndex + 1} of ${this.totalQuestions}`); // Log the current question
         }
     }
 
@@ -255,4 +257,5 @@ function saveScore(userId, score, quizId, totalCorrectQuestions) {
 window.onload = () => {
     const quiz = new QuizGame(); // Crée une instance du quiz
     quiz.start(); // Lance le quiz
+    
 };

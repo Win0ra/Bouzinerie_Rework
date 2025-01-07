@@ -19,7 +19,7 @@
 
         </div>
         <div class="footer">
-            <span id="score"></span>
+            <span id="current-question"></span>/<span id="total-question"></span>
             
         </div>
 
@@ -33,4 +33,4 @@
 <script>
     const questions = <?php echo json_encode($questions); ?>;
 </script>
-<script src="<?php dirname(__DIR__) ?>/public/js/quiz.js"></script>
+<script src="<?php dirname(__DIR__) ?>/js/quiz.js"></script>

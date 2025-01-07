@@ -32,6 +32,7 @@ class HomeController {
 
         // Récupère les catégories pour les afficher sur la page d'accueil
         $categories = $this->categoryModel->getAll();
+        $userModel = $this->userModel;
 
         // Inclut la vue d'accueil
         require dirname(__DIR__) . '/views/home/index.php';
