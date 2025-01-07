@@ -50,6 +50,7 @@ class AuthController {
                         } else {
                             // Si non coché, supprime le cookie de mot de passe
                             setcookie('remember_password', '', time() - 3600, "/"); // Supprime le cookie
+                            setcookie('remember_me', '', time() - 3600, "/"); // Supprime le cookie
 }
                         
                         // Redirige vers la page d'accueil
