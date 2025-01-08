@@ -29,9 +29,7 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
-body {
-    line-height: 1;
-}
+
 ol, ul {
     list-style: none;
 }
@@ -50,9 +48,14 @@ table {
 
 /* CONTENU DE LA PAGE */
 body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     background: linear-gradient(0deg, rgba(170, 203, 245, 1) 0%, rgba(238, 255, 254, 1) 20%, rgba(238, 255, 254, 1) 70%, rgba(170, 203, 245, 1) 100%);
     background-repeat: no-repeat;
-    min-height: 100vh;
+    background-attachment: fixed;
+    line-height: 1;
 }
 
 h1 {
@@ -245,6 +248,30 @@ label {
     font-size: 20px;
 }
 
+.g_id_signin {
+    width: 50%; 
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -30px auto 20px auto; /* Le -30px rapproche le bouton du précédent */
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.g_id_signin img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.g_id_signin span {
+    font-family: 'Bellota', sans-serif;
+    font-size: 18px;
+    color: #757575;
+    padding-bottom: 2px;
+}
+
 /* TABLETTE */
 @media (max-width: 768px) {
     .content {
@@ -304,7 +331,4 @@ label {
         margin: 0px 0px 30px 0px;
     }
 
-    /* .no-compte {
-        margin: 30px 0px 0px 0px;
-    } */
 }

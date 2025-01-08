@@ -1,10 +1,14 @@
 <?php require dirname(__DIR__) . '/templates/header.php'; ?>
 <link rel="stylesheet" href="public/css/styles-contact.css" type="text/css" media="all">
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script src="https://www.google.com/recaptcha/enterprise.js?render=6Lf6rK8qAAAAAGypquwa53yxoITA9UD5en6nYXP1"></script>
 <script>
-    function onSubmit(token) {
-        document.getElementById("demo-form").submit();
-    }
+function onClick(e) {
+    e.preventDefault();
+    grecaptcha.enterprise.ready(async () => {
+    const token = await grecaptcha.enterprise.execute('6Lf6rK8qAAAAAGypquwa53yxoITA9UD5en6nYXP1', {action: 'LOGIN'});
+    });
+}
 </script>
 
 <div class="margin">

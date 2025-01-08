@@ -17,7 +17,6 @@
 
 </head>
 
-
 <div class="Navbar front">
     <div class="logo">
         <a href="index.php?page=home">

@@ -11,7 +11,7 @@ require dirname(__DIR__). '/templates/header.php'; ?>
     <script src="https://kit.fontawesome.com/e98829b701.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<!-- <body> -->
 
     <div class="margin">
         <h1>Classement Général</h1>
@@ -41,6 +41,6 @@ require dirname(__DIR__). '/templates/header.php'; ?>
         </div>
     </div>
 
-</body>
+<!-- </body> -->
 </html>
 <?php require dirname(__DIR__). '/templates/footer.php'; ?>

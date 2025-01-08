@@ -24,7 +24,6 @@
       </ul>
       <div class="logo"><a href="index.php?page=home"><img src="<?php dirname(__DIR__) ?>public/img/logo_bleu.svg" alt="logo_la_bouzinerie"></a></div>
    </div>
-   <!-- TO DO Ajouter la phrase  Connecté en tant que Nom prenom -->
    </div>
 
 </body>

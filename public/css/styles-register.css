@@ -36,11 +36,14 @@ html {
 }
 
 body {
-    line-height: 1;
+    margin: 0;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     background: linear-gradient(0deg, rgba(170, 203, 245, 1) 0%, rgba(238, 255, 254, 1) 20%, rgba(238, 255, 254, 1) 70%, rgba(170, 203, 245, 1) 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
+    line-height: 1;
 }
 
 ol, ul {
@@ -243,6 +246,7 @@ button.login a:active {
         margin: 0px 0px 40px 0px;
         display: flex;
         align-items: center;
+        padding-left: 0px;
     }
 
 
