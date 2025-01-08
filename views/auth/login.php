@@ -24,7 +24,7 @@
 </script>
 <?php if (isset($_GET['reset']) && $_GET['reset'] == '1') : ?>
 
-<div id="notification"> your password has been reset successfully you can login with you new password</div>
+<div id="notification"> Votre mot de passe a été réinitialisé avec succès, vous pouvez vous connecter avec votre nouveau mot de passe</div>
 <?php endif; ?>
 
 <div class="content">

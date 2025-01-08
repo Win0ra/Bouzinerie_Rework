@@ -66,7 +66,7 @@ table {
 }
 
 /* CONTENU DE LA PAGE */
-h1 {
+h1.text-center {
     font-family: Lobster Two;
     font-size: 36px;
     margin-top: 20px;
