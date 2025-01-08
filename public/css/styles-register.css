@@ -190,6 +190,7 @@ input#checkbox {
     margin: 0px 0px 40px 0px;
     display: flex;
     align-items: center;
+    padding-left: 170px;
 }
 
 button.login {
@@ -236,6 +237,14 @@ button.login a:active {
         height: 40px;
         margin: 0px 0px 20px 0px;
     }
+
+    .checkbox {
+        width: 100%;
+        margin: 0px 0px 40px 0px;
+        display: flex;
+        align-items: center;
+    }
+
 
     .register {
         font-size: 20px;

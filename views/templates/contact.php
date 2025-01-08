@@ -1,41 +1,57 @@
-<?php require dirname(__DIR__). '/templates/header.php'; ?>
+<?php require dirname(__DIR__) . '/templates/header.php'; ?>
+<link rel="stylesheet" href="public/css/styles-contact.css" type="text/css" media="all">
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+    function onSubmit(token) {
+        document.getElementById("demo-form").submit();
+    }
+</script>
 
 <div class="margin">
     <h1>Nous contacter</h1>
     <div class="Form" id="Form">
-    <form name="Contact" method="post" action="mailto:contact.bouzinerie@gmail.com" enctype="text/plain">
-            <div class="FirstName">
-                <h2>Prénom</h2><br>
-                <input type="text" name="FirstName" id="Prenom" placeholder="Jean-Bouzin-Le-Meilleur" class="champ personne" required>
-            </div>
+        <form method="post" action="/contact">
+            <?php $csrf_token = bin2hex(random_bytes(32));
+            $_SESSION['csrf_token'] = $csrf_token; ?>
+            <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
 
-            <div class="LastName">
-                <h2>Nom</h2><br>
-                <input type="text" name="LastName" id="Nom" placeholder="Jean-Bouzin-Le-Meilleur" class="champ personne" required>
+            <div class="Pseudo">
+                <label for="Pseudo">Pseudo</label><br>
+                <input type="text" name="Pseudo" id="Pseudo"
+                    placeholder="Pseudo" class="champ personne"
+                    maxlength="50" required>
             </div>
 
             <div class="Email">
-                <h2>Email</h2><br>
-                <input type="email" name="Email" id="Email" placeholder="Jean-Bouzin-Le-Meilleur@gmail.com" class="champ code" required>
+                <label for="Email">Email</label><br>
+                <input type="email" name="Email" id="Email"
+                    placeholder="Jean-Bouzin-Le-Meilleur@gmail.com"
+                    class="champ code" maxlength="100" required>
             </div>
 
             <div class="Object">
-                <h2>Objet</h2><br>
-                <input type="text" name="Object" id="Objet" placeholder="Objet du message" class="champ code" required>
+                <label for="Objet">Objet</label><br>
+                <input type="text" name="Object" id="Objet"
+                    placeholder="Objet du message" class="champ code"
+                    maxlength="100" required>
             </div>
 
             <div class="LongText">
-                <h2>Message</h2><br>
-                <textarea name="Message" class="LongText" placeholder="Bonjour..." required></textarea>
+                <label for="Message">Message</label><br>
+                <textarea name="Message" id="Message" class="LongText"
+                    placeholder="Bonjour..." required
+                    maxlength="1000"></textarea>
             </div>
 
-            <label>
-                <input type="checkbox" id="checkbox" name="Confidentiality" value="oui" required> Je ne suis pas un robot
-            </label>
-            <button type="submit" class="Send"><i class="fa-solid fa-paper-plane"></i>
+            <!-- Remplacer la checkbox par un captcha -->
+            <div class="g-recaptcha"
+                data-sitekey="VOTRE_CLE_SITE_RECAPTCHA"></div>
+
+            <button type="submit" class="Send">
+                <i class="fa-solid fa-paper-plane"></i>
                 <p class="txt-send">Envoyer</p>
             </button>
         </form>
     </div>
 </div>
-<?php require dirname(__DIR__). '/templates/footer.php'; ?>
+<?php require dirname(__DIR__) . '/templates/footer.php'; ?>
