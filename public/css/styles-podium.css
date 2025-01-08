@@ -3,6 +3,16 @@
     margin-top: 40px;
 } */
 
+html {
+    height: 100%;
+}
+
+body {
+    background: linear-gradient(0deg, rgba(170, 203, 245, 1) 0%, rgba(238, 255, 254, 1) 20%, rgba(238, 255, 254, 1) 70%, rgba(170, 203, 245, 1) 100%);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
 .h2-podium {
     font-size: 36px;
     text-align: center;
@@ -124,11 +134,12 @@ p.p-podium {
     }
 
     #first {
-        font-size: 140px;
+        font-size: 115px;
+
     }
 
     #second, #third {
-        font-size: 100px;
+        font-size: 90px;
     }
 
     .FirstBlock {
