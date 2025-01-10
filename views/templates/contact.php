@@ -1,15 +1,17 @@
 <?php require dirname(__DIR__) . '/templates/header.php'; ?>
 <link rel="stylesheet" href="public/css/styles-contact.css" type="text/css" media="all">
 
-<script src="https://www.google.com/recaptcha/enterprise.js?render=6Lf6rK8qAAAAAGypquwa53yxoITA9UD5en6nYXP1"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
 function onClick(e) {
     e.preventDefault();
     grecaptcha.enterprise.ready(async () => {
-    const token = await grecaptcha.enterprise.execute('6Lf6rK8qAAAAAGypquwa53yxoITA9UD5en6nYXP1', {action: 'LOGIN'});
+        const token = await grecaptcha.enterprise.execute('6LcAZbMqAAAAAFSL0OFtB6cATsyL0DRXTDRNUo4h', {action: 'LOGIN'});
+        console.log('Token:', token);
     });
 }
 </script>
+
 
 <div class="margin">
     <h1>Nous contacter</h1>
@@ -48,9 +50,11 @@ function onClick(e) {
             </div>
 
             <!-- Remplacer la checkbox par un captcha -->
-            <div class="g-recaptcha"
-                data-sitekey="VOTRE_CLE_SITE_RECAPTCHA"></div>
-
+            <form action="?" method="POST">
+        <div class="g-recaptcha" data-sitekey="6LcAZbMqAAAAAFSL0OFtB6cATsyL0DRXTDRNUo4h"></div>
+        <br/>
+        <!-- <input type="submit" value="Submit"> -->
+    </form>
             <button type="submit" class="Send">
                 <i class="fa-solid fa-paper-plane"></i>
                 <p class="txt-send">Envoyer</p>

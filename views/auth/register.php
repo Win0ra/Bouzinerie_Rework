@@ -3,9 +3,13 @@
 <link rel="stylesheet" href="public/css/styles-register.css" type="text/css" media="all">
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
-    function onSubmit(token) {
-        document.getElementById("demo-form").submit();
-    }
+function onClick(e) {
+    e.preventDefault();
+    grecaptcha.enterprise.ready(async () => {
+        const token = await grecaptcha.enterprise.execute('6LcAZbMqAAAAAFSL0OFtB6cATsyL0DRXTDRNUo4h', {action: 'LOGIN'});
+        console.log('Token:', token);
+    });
+}
 </script>
 
 <div class="content">
@@ -62,7 +66,7 @@
             </div><br/>
 
     <form action="?" method="POST">
-        <div class="g-recaptcha" data-sitekey="6Lf6rK8qAAAAAGypquwa53yxoITA9UD5en6nYXP1"></div>
+        <div class="g-recaptcha" data-sitekey="6LcAZbMqAAAAAFSL0OFtB6cATsyL0DRXTDRNUo4h"></div>
         <br/>
         <input type="submit" value="Submit">
     </form>
