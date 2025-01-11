@@ -2,3 +2,6 @@
 */config/
 config/
 captcha.php
+*/vendor/
+/vendor
+vendor/
