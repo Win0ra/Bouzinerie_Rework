@@ -138,6 +138,21 @@ class User
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    // Récupère un utilisateur par son email
+    public function findByEmail($email)
+    {
+        try {
+            $query = "SELECT * FROM users WHERE email = :email";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute([':email' => $email]);
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error finding user by email: " . $e->getMessage());
+            return false;
+        }
+    }
+
     // Récupère le pseudo d'un utilisateur par son ID
     public function getUsernameById($userId)
     {

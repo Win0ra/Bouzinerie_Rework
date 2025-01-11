@@ -17,7 +17,11 @@ switch ($page) {
         $controller = new AuthController();
         $controller->login(); // Appelle la méthode de connexion
         break;
-
+    case 'googleAuth':
+        require_once 'controllers/AuthController.php';
+        $controller = new AuthController();
+        $controller->loginGoogle(); // Appelle la méthode de connexion
+        break;
     // Authentification : Inscription
     case 'register':
         require_once 'controllers/AuthController.php';

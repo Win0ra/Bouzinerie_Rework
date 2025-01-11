@@ -133,6 +133,38 @@ class AuthController {
         require dirname(__DIR__).'/views/auth/login.php';
     }
 
+    public function loginGoogle()
+    {
+        $data = json_decode(file_get_contents("php://input"), true);
+        $token = $data['token'];
+
+        $client = new Google_Client(['client_id' => '1034339065791-3thgahi0eg6f1bbvgets1ljnvvldmkn4.apps.googleusercontent.com']); // Specify your client ID
+        $payload = $client->verifyIdToken($token);
+        if ($payload) {
+            $email = $payload['email'];
+            $name = $payload['name'];
+
+            $user = $this->userModel->findByEmail($email);
+            if (!$user) {
+                $this->userModel->create($email, '', $name); 
+            }
+            $user = $this->userModel->findByEmail($email);
+
+            // Log the user in
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['email'] = $email;
+            $_SESSION['pseudo'] = trim($name); 
+
+            // Redirect to the home page
+            header('Location: index.php?page=home');
+            
+            exit;
+        } else {
+            // Invalid token
+            echo 'Invalid ID token';
+        }
+    }
+
     // Gère le processus d'inscription des utilisateurs
     public function register() {
         $errors = []; // Tableau pour stocker les erreurs de validation
