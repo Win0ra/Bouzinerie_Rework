@@ -40,8 +40,13 @@ class AuthController {
                 // Content
                 $mail->isHTML(true);
                 $mail->Subject = 'Password Reset Request';
-                $mail->Body    = 'Click <a href="http://quiz.local/index.php?page=reset-password&token=' . $token . '">here</a> to reset your password.';
-
+                $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https" : "http";
+                $host = $_SERVER['HTTP_HOST'];
+                $baseUrl = $protocol . "://" . $host;
+                
+                // Set the email body with the dynamic base URL
+                $mail->Body = 'Click <a href="' . $baseUrl . '/index.php?page=reset-password&token=' . urlencode($token) . '">here</a> to reset your password.';
+                
                 $mail->send();
                 echo 'Reset link has been sent to your email.';
             } catch (Exception $e) {
