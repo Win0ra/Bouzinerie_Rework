@@ -109,7 +109,6 @@ function handleCredentialResponse(response) {
             <form action="?" method="POST">
                 <div class="g-recaptcha" data-sitekey="6LcAZbMqAAAAAFSL0OFtB6cATsyL0DRXTDRNUo4h"></div>
                 <br />
-                <input type="submit" value="Submit">
             </form>
             <div class="mt-3 text-center">
                 <p>Déjà inscrit?
